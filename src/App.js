@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import NavigationItems from "./components/Navigation/NavigationItems";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
 import Rockets from "./screens/Rockets";
@@ -9,9 +10,7 @@ const App = () => {
     <Router>
       {/* Nav */}
 
-      <Link to="/">Home</Link>
-      <Link to="/rockets">Rockets</Link>
-      <Link to="/launches">Launches</Link>
+      <NavigationItems />
 
       <Switch>
         <Route path="/" exact>

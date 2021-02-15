@@ -11,9 +11,11 @@ const Rockets = (props) => {
     };
     fetchRockets();
   }, []);
+
   return (
     <div>
-      {rockets && rockets.map((rocket) => <h1>{rocket.rocket_name}</h1>)}
+      {rockets &&
+        rockets.map((rocket) => <h1 key={rocket.id}>{rocket.rocket_name}</h1>)}
     </div>
   );
 };

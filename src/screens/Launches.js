@@ -11,9 +11,13 @@ const Launches = (props) => {
     };
     fetchLaunches();
   }, []);
+
   return (
     <div>
-      {launches && launches.map((launche) => <h1>{launche.mission_name}</h1>)}
+      {launches &&
+        launches.map((launch) => (
+          <h1 key={launch.mission_name}>{launch.mission_name}</h1> // doesn't have an id
+        ))}
     </div>
   );
 };

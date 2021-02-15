@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [historys, setHistory] = useState();
+  const [histories, setHistories] = useState();
 
   useEffect(() => {
     const fetchHistory = async () => {
       const response = await fetch("https://api.spacexdata.com/v3/history");
       const data = await response.json();
-      setHistory(data);
+      setHistories(data);
     };
     fetchHistory();
   }, []);
+
   return (
     <div>
-      {historys && historys.map((history) => <h1>{history.title}</h1>)}
+      {histories &&
+        histories.map((history) => <h1 key={history.id}>{history.title}</h1>)}
     </div>
   );
 };
