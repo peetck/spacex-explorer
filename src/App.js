@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Launches from "./pages/Launches";
-import Rockets from "./pages/Rockets";
+import Home from "./screens/Home";
+import Launches from "./screens/Launches";
+import Rockets from "./screens/Rockets";
 
 const App = () => {
   return (
