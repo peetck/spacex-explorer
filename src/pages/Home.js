@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-const Home = (props) => {
-  const [history, setHistory] = useState(); 
-  
+const Home = () => {
+  const [historys, setHistory] = useState();
+
   useEffect(() => {
     const fetchHistory = async () => {
       const response = await fetch("https://api.spacexdata.com/v3/history");
@@ -13,7 +13,7 @@ const Home = (props) => {
   }, []);
   return (
     <div>
-      <h1>{history.title}</h1>
+      {historys && historys.map((history) => <h1>{history.title}</h1>)}
     </div>
   );
 };
