@@ -1,12 +1,13 @@
 import NavItem from "./NavItem";
 import "./Nav.css";
-import navIcon from "../../assets/images/icon.png";
+
+const FAVICON = process.env.PUBLIC_URL + "/favicon.png";
 
 const Nav = () => {
   return (
-    <nav className="nav flex flex-wrap items-center justify-between px-4">
+    <nav className="nav flex flex-wrap items-center justify-between px-4 bg-black text-white">
       <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
-        <img src={navIcon} alt="Can't fetch img" className="h-10 mr-2 w-10" />
+        <img src={FAVICON} alt="Can't fetch img" className="h-10 mr-2 w-10" />
         <span className="font-semibold text-xl tracking-tight">
           SpaceX Explorer
         </span>
@@ -20,7 +21,7 @@ const Nav = () => {
         <span className="icon bg-grey-darkest flex items-center relative"></span>
       </label>
 
-      <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
+      <ul className="flex menu border-gray-500 border-b justify-end m-0 w-full md:border-none md:w-auto">
         <NavItem path="/" exact>
           Home
         </NavItem>

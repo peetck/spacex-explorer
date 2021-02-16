@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .icon {
     width: 1.125em;
     height: 0.125em;
@@ -12,7 +12,7 @@
     height: 100%;
     transition: all 0.2s ease-out;
     content: "";
-    background: #3d4852;
+    background: white;
   }
 
   .icon::before {
