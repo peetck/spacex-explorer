@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const NavigationItem = ({ path, exact, children }) => {
+const NavItem = ({ path, exact, children }) => {
   return (
     <li className="border-t md:border-none">
       <NavLink
@@ -15,4 +15,4 @@ const NavigationItem = ({ path, exact, children }) => {
   );
 };
 
-export default NavigationItem;
+export default NavItem;

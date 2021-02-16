@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import NavigationItems from "./components/Navigation/NavigationItems";
+import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
 import Rockets from "./screens/Rockets";
@@ -8,9 +8,7 @@ import Rockets from "./screens/Rockets";
 const App = () => {
   return (
     <Router>
-      {/* Nav */}
-
-      <NavigationItems />
+      <Nav />
 
       <Switch>
         <Route path="/" exact>

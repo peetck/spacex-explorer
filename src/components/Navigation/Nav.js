@@ -1,10 +1,10 @@
-import NavigationItem from "./NavigationItem";
-import "./NavigationItems.css";
+import NavItem from "./NavItem";
+import "./Nav.css";
 import navIcon from "../../assets/images/icon.png";
 
-const NavigationItems = (props) => {
+const Nav = () => {
   return (
-    <nav className="nav flex flex-wrap items-center justify-between px-4 mb-5">
+    <nav className="nav flex flex-wrap items-center justify-between px-4">
       <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
         <img src={navIcon} alt="Can't fetch img" className="h-10 mr-2 w-10" />
         <span className="font-semibold text-xl tracking-tight">
@@ -21,14 +21,14 @@ const NavigationItems = (props) => {
       </label>
 
       <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
-        <NavigationItem path="/" exact>
+        <NavItem path="/" exact>
           Home
-        </NavigationItem>
-        <NavigationItem path="/rockets">Rockets</NavigationItem>
-        <NavigationItem path="/launches">Launches</NavigationItem>
+        </NavItem>
+        <NavItem path="/rockets">Rockets</NavItem>
+        <NavItem path="/launches">Launches</NavItem>
       </ul>
     </nav>
   );
 };
 
-export default NavigationItems;
+export default Nav;
