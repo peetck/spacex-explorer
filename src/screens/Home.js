@@ -1,8 +1,9 @@
 // import { useEffect, useState } from "react";
 
-import Wave from "../components/Home/Wave";
-import Hero from "../components/Home/Hero";
+import Wave from "../components/UI/Wave";
+import Hero from "../components/UI/Hero";
 import Founder from "../components/Home/Founder";
+import img from "../assets/images/space discovery.svg";
 
 const Home = () => {
   // const [histories, setHistories] = useState();
@@ -29,7 +30,11 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
+      <Hero
+        title={"Welcome to SpaceX Explorer"}
+        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad ducimus quas laborum debitis nisi sapiente quam, corporis sunt, quae, exercitationem maxime. Rem animi repellat nulla, consectetur dolores porro vero?"
+        image={img}
+      />
       <Wave color="white" />
       <Founder />
       <Wave color="black" />
