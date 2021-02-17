@@ -1,9 +1,9 @@
 const Card = ({ rocketName, active, imageUrl, dateFirstFight }) => {
   return (
-      <div className="flex flex-col cursor-pointer shadow-lg rounded-md w-80  p-3 mx-16 mt-16 bg-black">
+      <div className="flex flex-col cursor-pointer shadow-lg rounded-md w-80  p-3 mx-16 mt-16 bg-white">
         <div className="group relative">
           <img
-            className="w-80 h-72 rounded-3xl transform hover:-rotate-3  transition delay-150 duration-3000"
+            className="w-80 h-72 rounded-3xl transform hover:-rotate-3  transition duration-2000"
             src={imageUrl}
             alt="Can't load img"
           />
@@ -24,7 +24,7 @@ const Card = ({ rocketName, active, imageUrl, dateFirstFight }) => {
               ></span>
             </span>
           </h3>
-          
+
           {/* <p className="my-1">{rocketName}</p> */}
           <div className="flex flex-1">
             <span className="text-gray-400 line-clamp-2">
