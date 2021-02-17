@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Card = ({ rocketName, active, imageUrl, dateFirstFight, id }) => {
   return (
-    <div className="flex flex-col cursor-pointer shadow-lg rounded-md w-80  p-3 mx-16 mt-16 bg-white">
+    <div className="flex flex-col cursor-pointer shadow-lg rounded-md w-80  p-3 mx-16 mt-16 bg-white transform hover:-rotate-3  transition duration-2000">
       <Link to={`/rockets/${id}`}>
         <div className="group relative">
           <img
-            className="w-80 h-72 rounded-3xl transform hover:-rotate-3  transition duration-2000"
+            className="w-80 h-72 rounded-3xl"
             src={imageUrl}
             alt="Can't load img"
           />
