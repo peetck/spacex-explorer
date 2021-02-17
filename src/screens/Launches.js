@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+import Card from "../components/Launches/Card";
+import Wave from "../components/UI/Wave";
+import Hero from "../components/UI/Hero";
+import img from "../assets/images/growth 2.svg";
+
 const Launches = (props) => {
   const [launches, setLaunches] = useState();
 
@@ -14,10 +19,35 @@ const Launches = (props) => {
 
   return (
     <div>
-      {launches &&
-        launches.map((launch) => (
-          <h1 key={launch.mission_name}>{launch.mission_name}</h1> // doesn't have an id
-        ))}
+      <Hero
+        title="Discover all spaceX launches"
+        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione adipisci, quod nisi expedita a reiciendis pariatur quos nesciunt tempora exercitationem iusto esse cum sapiente repudiandae modi, sint quia eaque."
+        image={img}
+      />
+
+      <Wave color="white" />
+
+      <div className="container mx-auto">
+        <h1 className="w-full text-5xl font-bold leading-tight text-center my-14 ">
+          Launches
+        </h1>
+      </div>
+
+      <div className="flex flex-wrap justify-center">
+        {launches &&
+          launches.map((launch) => (
+            <Card
+              key={launch.launch_date_utc}
+              missionName={launch.mission_name}
+              date={launch.launch_date_utc}
+              imageUrl={launch.links.mission_patch}
+              success={launch.launch_success}
+              details={launch.details}
+            />
+          ))}
+      </div>
+
+      <Wave color="black" />
     </div>
   );
 };
