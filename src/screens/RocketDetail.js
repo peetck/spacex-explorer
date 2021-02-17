@@ -24,22 +24,22 @@ const RocketDetail = (props) => {
     <div className="h-screen">
       <Wave color="white" />
       {/* <h1>{rocket && rocket ? rocket.rocket_name : ""}</h1> */}
-      <div class="text-center">
+      <div className="text-center">
         <button
-          class={`bg-grey ${dataIsVisible ? "bg-gray-500" : ""} font-bold py-2 px-4 shadow -mr-1 border border-gray-200 m-4`}
+          className={`bg-grey ${dataIsVisible ? "bg-gray-500" : ""} font-bold py-2 px-4 shadow -mr-1 border border-gray-200 m-4`}
           onClick={dataClick}
         >
           Data
         </button>
         <button
-          class={`bg-grey ${wikiIsVisible ? "bg-gray-500" : "" } font-bold py-2 px-4 rounded-r rounded-lg  border border-gray-200 m-4`}
+          className={`bg-grey ${wikiIsVisible ? "bg-gray-500" : "" } font-bold py-2 px-4 rounded-r rounded-lg  border border-gray-200 m-4`}
           onClick={wikiClick}
         >
           Wiki
         </button>
       </div>
       {dataIsVisible == true ? (
-        <div class="grid grid-cols-2 gap-14">
+        <div className="grid grid-cols-2 gap-14">
           <div>
             <img
               className="m-auto w-8/12 h-8/12 shadow-2xl "
