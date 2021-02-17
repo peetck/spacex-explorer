@@ -36,6 +36,7 @@ const Rockets = (props) => {
             rockets.map((rocket) => (
               <Card
                 key={rocket.id}
+                id={rocket.id}
                 rocketName={rocket.rocket_name}
                 active={rocket.active}
                 imageUrl={rocket.flickr_images[0]}

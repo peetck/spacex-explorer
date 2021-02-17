@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 
 const LaunchDetail = (props) => {
-  const { id } = useParams();
+  const { flightNumber } = useParams();
 
-  return <h1>{id}</h1>;
+  return <h1>{flightNumber}</h1>;
 };
 
 export default LaunchDetail;
