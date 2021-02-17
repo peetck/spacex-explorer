@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import Card from "../components/Rockets/Card";
+// import img from "../assets/images/growth 2.svg";
+
 const Rockets = (props) => {
   const [rockets, setRockets] = useState();
 
@@ -14,48 +17,25 @@ const Rockets = (props) => {
 
   return (
     <div className="w-full bg-black text-white">
-      <div class="grid grid-cols-4 gap-0 place-content-center h-auto mx-28">
-        {rockets &&
-          rockets.map((rocket) => (
-            <div><img
-              class="w-80 h-72 m-12 rounded-3xl transform hover:-rotate-3  transition delay-150 duration-300"
-              src={rocket.flickr_images[0]}
-              key={rocket.id}
-            ></img></div>
-          ))}
-          {rockets &&
-          rockets.map((rocket) => (
-            <div>
-              <h2 class="w-80 mx-12 rounded-3xl text-center">
-                {rocket.rocket_name}
-                <span class="relative inline-flex rounded-md shadow-sm ml-2">
-                  <span
-                    class={`animate-ping absolute inline-flex h-full w-full rounded-full ${
-                      rocket.active ? "bg-green-500" : "bg-red-500"
-                    } opacity-75`}
-                  ></span>
-                  <span
-                    class={`relative inline-flex rounded-full h-3 w-3 ${
-                      rocket.active ? "bg-green-500" : "bg-red-500"
-                    }`}
-                  ></span>
-                </span>
-              </h2>
-            </div>
-          ))}
-        
+      <div className="container mx-auto">
+        <h1 className="w-full text-5xl font-bold leading-tight text-center ">
+          ร็อคเก็ตรันเชอรรรรรรรรร์
+        </h1>
       </div>
-      {/* <div className="flex justify-center ">
+
+      <div className="flex flex-wrap justify-center ">
         {rockets &&
           rockets.map((rocket) => (
-            <img
-              class="w-80 h-72 m-12 rounded-3xl transform hover:-rotate-3  transition delay-150 duration-300"
-              src={rocket.flickr_images[0]}
+            <Card
               key={rocket.id}
-            ></img>
+              rocketName={rocket.rocket_name}
+              active={rocket.active}
+              imageUrl={rocket.flickr_images[0]}
+              dateFirstFight={rocket.first_flight}
+            />
           ))}
-      </div> */}
-{/* 
+      </div>
+      {/* 
       <div className="flex justify-center ">
         {rockets &&
           rockets.map((rocket) => (
