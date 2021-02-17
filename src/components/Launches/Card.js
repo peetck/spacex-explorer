@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import noImage from "../../assets/images/no-image.png";
+
 const Card = (props) => {
   const {
     missionName,
@@ -11,14 +13,10 @@ const Card = (props) => {
   } = props;
 
   return (
-    <Link to={`/launches/${flight_number}`}>
-      <div className="flex flex-col shadow-lg rounded-md w-72 p-3 mx-16 mt-16 hover:shadow-2xl">
-        <div className="group relative">
-          <img
-            className="w-full block rounded-md p-5 bg-gradient-to-b from-gray-300 to-gray-800"
-            src={imageUrl}
-            alt="Can't load img"
-          />
+    <div className="flex flex-col shadow-lg rounded-md w-72 p-3 mx-16 mt-16 hover:shadow-2xl">
+      <Link to={`/launches/${flight_number}`}>
+        <div className="group relative rounded-md bg-gradient-to-b from-gray-300 to-gray-800 w-full h-72">
+          <img className="p-5" src={imageUrl ?? noImage} alt="Can't load img" />
           <div className="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
             <button className="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
               <svg
@@ -49,8 +47,8 @@ const Card = (props) => {
             {success ? "Success" : "Fail"}
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

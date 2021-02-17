@@ -4,13 +4,16 @@ import Card from "../components/Launches/Card";
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
 import img from "../assets/images/growth 2.svg";
+import Pagination from "../components/Launches/Pagination";
 
 const Launches = (props) => {
   const [launches, setLaunches] = useState();
 
   useEffect(() => {
     const fetchLaunches = async () => {
-      const response = await fetch("https://api.spacexdata.com/v3/launches?limit=3");
+      const response = await fetch(
+        "https://api.spacexdata.com/v3/launches?id=true&limit=4"
+      );
       const data = await response.json();
       setLaunches(data);
     };
@@ -28,7 +31,7 @@ const Launches = (props) => {
       <Wave color="white" />
 
       <div className="container mx-auto">
-        <h1 className="w-full text-5xl font-bold leading-tight text-center my-14 ">
+        <h1 className="w-full text-5xl font-bold leading-tight text-center mt-14 ">
           Launches
         </h1>
       </div>
@@ -37,7 +40,7 @@ const Launches = (props) => {
         {launches &&
           launches.map((launch) => (
             <Card
-              key={launch.flight_number}
+              key={launch._id}
               flight_number={launch.flight_number}
               missionName={launch.mission_name}
               date={launch.launch_date_utc}
@@ -47,6 +50,8 @@ const Launches = (props) => {
             />
           ))}
       </div>
+
+      <Pagination />
 
       <Wave color="black" />
     </div>

@@ -18,7 +18,7 @@ const App = () => {
       <Route path="/launches" exact>
         <Launches />
       </Route>
-      <Route path="/launches/:id">
+      <Route path="/launches/:flight_number">
         <LaunchDetail />
       </Route>
     </Switch>
