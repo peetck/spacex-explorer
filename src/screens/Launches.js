@@ -10,7 +10,7 @@ const Launches = (props) => {
 
   useEffect(() => {
     const fetchLaunches = async () => {
-      const response = await fetch("https://api.spacexdata.com/v3/launches");
+      const response = await fetch("https://api.spacexdata.com/v3/launches?limit=3");
       const data = await response.json();
       setLaunches(data);
     };
@@ -37,7 +37,8 @@ const Launches = (props) => {
         {launches &&
           launches.map((launch) => (
             <Card
-              key={launch.launch_date_utc}
+              key={launch.flight_number}
+              flight_number={launch.flight_number}
               missionName={launch.mission_name}
               date={launch.launch_date_utc}
               imageUrl={launch.links.mission_patch}
