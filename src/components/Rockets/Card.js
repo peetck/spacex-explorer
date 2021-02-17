@@ -14,14 +14,14 @@ const Card = ({ rocketName, active, imageUrl, dateFirstFight, id }) => {
         <div className="p-5">
           <h3 className="font-bold text-lg line-clamp-1">
             {rocketName}
-            <span class="relative inline-flex rounded-md shadow-sm ml-5">
+            <span className="relative inline-flex rounded-md shadow-sm ml-5">
               <span
-                class={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
                   active ? "bg-green-500" : "bg-red-500"
                 } opacity-75`}
               ></span>
               <span
-                class={`relative inline-flex rounded-full h-3 w-3 ${
+                className={`relative inline-flex rounded-full h-3 w-3 ${
                   active ? "bg-green-500" : "bg-red-500"
                 }`}
               ></span>

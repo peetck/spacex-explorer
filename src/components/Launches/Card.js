@@ -32,20 +32,27 @@ const Card = (props) => {
           </div>
         </div>
         <div className="p-5">
-          <h3 className="font-bold text-lg line-clamp-1">{missionName}</h3>
+          <div className="flex items-center">
+            <h3 className="w-full font-bold text-lg line-clamp-1">
+              {missionName}
+            </h3>
+            <span className="relative inline-flex rounded-md shadow-sm ml-5">
+              <span
+                className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                  success ? "bg-green-500" : "bg-red-500"
+                } opacity-75`}
+              />
+              <span
+                className={`relative inline-flex rounded-full h-3 w-3  ${
+                  success ? "bg-green-500" : "bg-red-500"
+                }`}
+              />
+            </span>
+          </div>
           <p className="my-1">{new Date(date).toLocaleDateString("en-GB")}</p>
           <div className="flex flex-1">
             <span className="text-gray-400 line-clamp-2">{details}</span>
           </div>
-        </div>
-        <div className="flex flex-1 align-bottom p-5 items-end">
-          <span
-            className={`text-sm p-2 rounded-full text-white  ${
-              success ? "bg-green-600" : "bg-red-600"
-            }`}
-          >
-            {success ? "Success" : "Fail"}
-          </span>
         </div>
       </Link>
     </div>
