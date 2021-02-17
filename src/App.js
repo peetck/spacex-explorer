@@ -12,9 +12,10 @@ const App = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/rockets">
+      <Route path="/rockets" exact>
         <Rockets />
       </Route>
+      <Route path="/rockets/:rocket_id">{/*  */}</Route>
       <Route path="/launches" exact>
         <Launches />
       </Route>

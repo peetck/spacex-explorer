@@ -3,7 +3,7 @@
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
 import Founder from "../components/Home/Founder";
-import img from "../assets/images/space discovery.svg";
+import img from "../assets/images/home.svg";
 
 const Home = () => {
   // const [histories, setHistories] = useState();

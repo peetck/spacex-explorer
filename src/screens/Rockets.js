@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Card from "../components/Rockets/Card";
 import Hero from "../components/UI/Hero";
-import img from "../assets/images/astronaut-01.svg";
+import img from "../assets/images/rocket.svg";
 import Wave from "../components/UI/Wave";
 
 const Rockets = (props) => {
@@ -20,7 +20,7 @@ const Rockets = (props) => {
   return (
     <>
       <Hero
-        title="Discover all spaceX launches"
+        title="Discover all spaceX rockets"
         subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione adipisci, quod nisi expedita a reiciendis pariatur quos nesciunt tempora exercitationem iusto esse cum sapiente repudiandae modi, sint quia eaque."
         image={img}
       />

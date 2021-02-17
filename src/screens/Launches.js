@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Launches/Card";
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
-import img from "../assets/images/growth 2.svg";
+import img from "../assets/images/launches.svg";
 import Pagination from "../components/Launches/Pagination";
 
 const Launches = (props) => {
