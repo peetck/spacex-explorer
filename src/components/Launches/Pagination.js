@@ -1,5 +1,3 @@
-import PaginationItem from "./PaginationItem";
-
 const Pagination = (props) => {
   const { pageChangeHandler, lastPage, currentPage, firstPage } = props;
 
@@ -39,13 +37,15 @@ const Pagination = (props) => {
   }
 
   const paginationBar = arr.map((value, index) => (
-    <PaginationItem
-      active={value === currentPage}
+    <div
+      className={`w-12 md:flex justify-center items-center hidden leading-5 transition duration-150 ease-in rounded-full ${
+        value === currentPage ? "bg-green-700 text-white" : ""
+      } ${value !== "..." ? "cursor-pointer" : ""}`}
       onClick={() => pageChangeHandler(value)}
       key={index}
     >
       {value}
-    </PaginationItem>
+    </div>
   ));
 
   return (
