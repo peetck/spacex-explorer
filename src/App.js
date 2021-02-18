@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <RocketsContextProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Nav />
         {routes}
       </Router>
