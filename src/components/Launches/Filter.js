@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import RocketContext from "../../contexts/RocketContext";
+import RocketsContext from "../../contexts/RocketsContext";
 
 const Filter = ({ rocketNameChangeHandler }) => {
-  const { rockets } = useContext(RocketContext);
+  const { rockets } = useContext(RocketsContext);
 
   return (
     <div className="container grid grid-cols-1 gap-6 mx-auto w-1/2 mt-14 xl:grid-cols-3">

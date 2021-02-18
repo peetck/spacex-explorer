@@ -1,15 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 
-const RocketContext = createContext();
+const RocketsContext = createContext();
 
-export const RocketContextProvider = (props) => {
+export const RocketsContextProvider = (props) => {
   const [rockets, setRockets] = useState([]);
 
   useEffect(() => {
     const fetchRockets = async () => {
-      const response = await fetch(
-        "https://api.spacexdata.com/v3/rockets?id=true"
-      );
+      const response = await fetch("https://api.spacexdata.com/v3/rockets");
       const data = await response.json();
       setRockets(data);
     };
@@ -21,15 +19,15 @@ export const RocketContextProvider = (props) => {
   };
 
   return (
-    <RocketContext.Provider
+    <RocketsContext.Provider
       value={{
         rockets: rockets,
         getRocket: getRocket,
       }}
     >
       {props.children}
-    </RocketContext.Provider>
+    </RocketsContext.Provider>
   );
 };
 
-export default RocketContext;
+export default RocketsContext;

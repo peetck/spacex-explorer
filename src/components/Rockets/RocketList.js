@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
 import Card from "../../components/UI/Card";
-import RocketContext from "../../contexts/RocketContext";
+import RocketsContext from "../../contexts/RocketsContext";
 
 const RocketList = () => {
-  const { rockets } = useContext(RocketContext);
+  const { rockets } = useContext(RocketsContext);
 
   return (
     <div className="flex flex-wrap justify-center ">

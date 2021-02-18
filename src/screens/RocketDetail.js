@@ -2,14 +2,14 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
-import RocketContext from "../contexts/RocketContext";
+import RocketsContext from "../contexts/RocketsContext";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
   const [wikiIsVisible, setWikiIsVisible] = useState(false);
   const [dataIsVisible, setDataIsVisible] = useState(true);
 
-  const { getRocket } = useContext(RocketContext);
+  const { getRocket } = useContext(RocketsContext);
 
   const rocket = getRocket(rocketId);
 

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { RocketContextProvider } from "./contexts/RocketContext";
+import { RocketsContextProvider } from "./contexts/RocketsContext";
 import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
@@ -30,12 +30,12 @@ const App = () => {
   );
 
   return (
-    <RocketContextProvider>
+    <RocketsContextProvider>
       <Router>
         <Nav />
         {routes}
       </Router>
-    </RocketContextProvider>
+    </RocketsContextProvider>
   );
 };
 
