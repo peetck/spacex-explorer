@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { Fragment } from "react";
 
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
@@ -29,7 +29,7 @@ const Home = () => {
   // }, []);
 
   return (
-    <>
+    <Fragment>
       <Hero
         title={"Welcome to SpaceX Explorer"}
         subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad ducimus quas laborum debitis nisi sapiente quam, corporis sunt, quae, exercitationem maxime. Rem animi repellat nulla, consectetur dolores porro vero?"
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
         </section>
       </div> */}
-    </>
+    </Fragment>
   );
 };
 

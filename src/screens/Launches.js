@@ -4,8 +4,9 @@ import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
 import img from "../assets/images/launches.svg";
 import LaunchList from "../components/Launches/LaunchList";
-import Input from "../components/Launches/Input";
+import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
+import Title from "../components/UI/Title";
 
 const LIMIT = 4;
 const FIRST_PAGE = 1;
@@ -15,16 +16,18 @@ const Launches = (props) => {
   const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
   const [lastPage, setLastPage] = useState();
 
+  const [rocketName, setRocketName] = useState("");
+
   const fetchLaunches = useCallback(async () => {
     const response = await fetch(
       `https://api.spacexdata.com/v3/launches?id=true&limit=${LIMIT}&offset=${
         (currentPage - 1) * LIMIT
-      }`
+      }&rocket_name=${rocketName}`
     );
     const data = await response.json();
     setLaunches(data);
     setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
-  }, [currentPage]);
+  }, [currentPage, rocketName]);
 
   useEffect(() => {
     fetchLaunches();
@@ -34,6 +37,11 @@ const Launches = (props) => {
     if (page >= 1 && page <= lastPage) {
       setCurrentPage(page);
     }
+  };
+
+  const rocketNameChangeHandler = (event) => {
+    setRocketName(event.target.value);
+    setCurrentPage(1);
   };
 
   return (
@@ -46,13 +54,9 @@ const Launches = (props) => {
 
       <Wave color="white" />
 
-      <div className="container mx-auto">
-        <h1 className="w-full text-5xl font-bold leading-tight text-center mt-14 ">
-          Launches
-        </h1>
-      </div>
+      <Title message="Launches" />
 
-      <Input />
+      <Filter rocketNameChangeHandler={rocketNameChangeHandler} />
 
       <LaunchList launches={launches} />
 

@@ -1,8 +1,11 @@
 const Pagination = (props) => {
   const { pageChangeHandler, lastPage, currentPage, firstPage } = props;
 
-  let arr = [1, 2, 3, 4, 5, 6, 7];
-  if (lastPage > 7) {
+  let arr;
+
+  if (lastPage <= 7) {
+    arr = [...Array(lastPage + 1).keys()].slice(1);
+  } else {
     if (currentPage < firstPage + 4) {
       arr = [
         firstPage,

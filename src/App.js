@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { RocketContextProvider } from "./contexts/RocketContext";
 import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
@@ -29,10 +30,12 @@ const App = () => {
   );
 
   return (
-    <Router>
-      <Nav />
-      {routes}
-    </Router>
+    <RocketContextProvider>
+      <Router>
+        <Nav />
+        {routes}
+      </Router>
+    </RocketContextProvider>
   );
 };
 

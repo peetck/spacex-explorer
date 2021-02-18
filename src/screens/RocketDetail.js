@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import Wave from "../components/UI/Wave";
+import RocketContext from "../contexts/RocketContext";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
-  const [rocket, setRocket] = useState();
   const [wikiIsVisible, setWikiIsVisible] = useState(false);
   const [dataIsVisible, setDataIsVisible] = useState(true);
-  const wikiClick = () => (setWikiIsVisible(true), setDataIsVisible(false));
-  const dataClick = () => (setWikiIsVisible(false), setDataIsVisible(true));
 
-  useEffect(() => {
-    const fetchRockets = async () => {
-      const response = await fetch(
-        `https://api.spacexdata.com/v3/rockets/${rocketId}`
-      );
-      const data = await response.json();
+  const { getRocket } = useContext(RocketContext);
 
-      setRocket(data);
-    };
+  const rocket = getRocket(rocketId);
 
-    fetchRockets();
-  }, []);
+  const wikiClick = () => {
+    setWikiIsVisible(true);
+    setDataIsVisible(false);
+  };
+  const dataClick = () => {
+    setWikiIsVisible(false);
+    setDataIsVisible(true);
+  };
+
   return (
     <div className="h-screen">
       <Wave color="white" />
@@ -50,7 +50,8 @@ const RocketDetail = (props) => {
             <img
               className="m-auto w-8/12 h-8/12 shadow-2xl "
               src={rocket && rocket ? rocket.flickr_images[0] : ""}
-            ></img>
+              alt="Can't load img"
+            />
           </div>
           <div className="m-auto mr-64">
             {rocket && rocket ? rocket.description : ""}
@@ -68,11 +69,11 @@ const RocketDetail = (props) => {
         <iframe
           className="mx-auto border border-gray-400"
           // id="inlineFrameExample"
-          // title="Inline Frame Example"
+          title="Inline Frame Example"
           width="60%"
           height="80%"
           src={rocket && rocket ? rocket.wikipedia : ""}
-        ></iframe>
+        />
       ) : (
         ""
       )}
