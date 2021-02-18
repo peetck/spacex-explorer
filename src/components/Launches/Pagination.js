@@ -1,76 +1,52 @@
 import PaginationItem from "./PaginationItem";
 
 const Pagination = (props) => {
-  const { pageChangeHandler, lastPage, currentPage } = props;
+  const { pageChangeHandler, lastPage, currentPage, firstPage } = props;
 
-  let paginationItems = (
-    <div className="flex h-12 font-medium rounded-full bg-gray-200">
-      <PaginationItem onClick={() => pageChangeHandler(1)}>1</PaginationItem>
-      <PaginationItem>...</PaginationItem>
-      <PaginationItem onClick={() => pageChangeHandler(currentPage - 1)}>
-        {currentPage - 1}
-      </PaginationItem>
-      <PaginationItem active>{currentPage}</PaginationItem>
-      <PaginationItem onClick={() => pageChangeHandler(currentPage + 1)}>
-        {currentPage + 1}
-      </PaginationItem>
-      <PaginationItem>...</PaginationItem>
-      <PaginationItem onClick={() => pageChangeHandler(lastPage)}>
-        {lastPage}
-      </PaginationItem>
-    </div>
-  );
-
-  if (currentPage <= 3) {
-    let left;
-
-    for (let i = 1; i < currentPage; i++) {
-      left = [
-        left,
-        <PaginationItem key={i} onClick={() => pageChangeHandler(i)}>
-          {i}
-        </PaginationItem>,
+  let arr = [1, 2, 3, 4, 5, 6, 7];
+  if (lastPage > 7) {
+    if (currentPage < firstPage + 4) {
+      arr = [
+        firstPage,
+        firstPage + 1,
+        firstPage + 2,
+        firstPage + 3,
+        firstPage + 4,
+        "...",
+        lastPage,
+      ];
+    } else if (currentPage > lastPage - 4) {
+      arr = [
+        firstPage,
+        "...",
+        lastPage - 4,
+        lastPage - 3,
+        lastPage - 2,
+        lastPage - 1,
+        lastPage,
+      ];
+    } else {
+      arr = [
+        firstPage,
+        "...",
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        "...",
+        lastPage,
       ];
     }
-    paginationItems = (
-      <div className="flex h-12 font-medium rounded-full bg-gray-200">
-        {left}
-        <PaginationItem active>{currentPage}</PaginationItem>
-        <PaginationItem onClick={() => pageChangeHandler(currentPage + 1)}>
-          {currentPage + 1}
-        </PaginationItem>
-        <PaginationItem>...</PaginationItem>
-        <PaginationItem onClick={() => pageChangeHandler(lastPage)}>
-          {lastPage}
-        </PaginationItem>
-      </div>
-    );
   }
 
-  if (currentPage >= lastPage - 2) {
-    // 26 27 28  >= 26
-    let right;
-
-    for (let i = currentPage + 1; i <= lastPage; i++) {
-      right = [
-        right,
-        <PaginationItem key={i} onClick={() => pageChangeHandler(i)}>
-          {i}
-        </PaginationItem>,
-      ];
-    }
-    paginationItems = (
-      <div className="flex h-12 font-medium rounded-full bg-gray-200">
-        <PaginationItem onClick={() => pageChangeHandler(1)}>1</PaginationItem>
-        <PaginationItem>...</PaginationItem>
-        <PaginationItem onClick={() => pageChangeHandler(currentPage - 1)}>
-          {currentPage - 1}
-        </PaginationItem>
-        <PaginationItem active>{currentPage}</PaginationItem>
-        {right}
-      </div>
-    );
-  }
+  const paginationBar = arr.map((value, index) => (
+    <PaginationItem
+      active={value === currentPage}
+      onClick={() => pageChangeHandler(value)}
+      key={index}
+    >
+      {value}
+    </PaginationItem>
+  ));
 
   return (
     <div className="flex flex-col items-center mt-20">
@@ -91,7 +67,11 @@ const Pagination = (props) => {
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </div>
-        {paginationItems}
+
+        <div className="flex h-12 font-medium rounded-full bg-gray-200">
+          {paginationBar}
+        </div>
+
         <div
           className="h-12 w-12 mx-5 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer"
           onClick={() => pageChangeHandler(currentPage + 1)}

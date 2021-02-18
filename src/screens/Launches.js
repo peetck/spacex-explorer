@@ -8,10 +8,11 @@ import Input from "../components/Launches/Input";
 import Pagination from "../components/Launches/Pagination";
 
 const LIMIT = 4;
+const FIRST_PAGE = 1;
 
 const Launches = (props) => {
   const [launches, setLaunches] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
   const [lastPage, setLastPage] = useState();
 
   const fetchLaunches = useCallback(async () => {
@@ -57,6 +58,7 @@ const Launches = (props) => {
 
       <Pagination
         pageChangeHandler={pageChangeHandler}
+        firstPage={FIRST_PAGE}
         currentPage={currentPage}
         lastPage={lastPage}
       />

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Card from "../components/Rockets/Card";
+import Card from "../components/UI/Card";
 import Hero from "../components/UI/Hero";
 import img from "../assets/images/rocket.svg";
 import Wave from "../components/UI/Wave";
@@ -31,16 +31,17 @@ const Rockets = (props) => {
             Rockets
           </h1>
         </div>
+
         <div className="flex flex-wrap justify-center ">
           {rockets &&
             rockets.map((rocket) => (
               <Card
-                key={rocket.id}
-                id={rocket.id}
-                rocketName={rocket.rocket_name}
+                key={rocket.rocket_id}
+                to={`/rockets/${rocket.rocket_id}`}
+                title={rocket.rocket_name}
                 active={rocket.active}
                 imageUrl={rocket.flickr_images[0]}
-                dateFirstFight={rocket.first_flight}
+                date={rocket.first_flight}
               />
             ))}
         </div>

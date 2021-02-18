@@ -1,18 +1,18 @@
-import Card from "./Card";
+import Card from "../UI/Card";
 
 const LaunchList = ({ launches }) => {
   return (
     <>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center ">
         {launches &&
           launches.map((launch) => (
             <Card
               key={launch._id}
-              flight_number={launch.flight_number}
-              missionName={launch.mission_name}
+              to={`/launches/${launch.flight_number}`}
+              title={launch.mission_name}
               date={launch.launch_date_utc}
               imageUrl={launch.links.mission_patch}
-              success={launch.launch_success}
+              active={launch.launch_success}
               details={launch.details}
             />
           ))}
