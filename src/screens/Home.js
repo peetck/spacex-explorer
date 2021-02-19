@@ -10,7 +10,7 @@ const Home = () => {
     <Fragment>
       <Hero
         title={"Welcome to SpaceX Explorer"}
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad ducimus quas laborum debitis nisi sapiente quam, corporis sunt, quae, exercitationem maxime. Rem animi repellat nulla, consectetur dolores porro vero?"
+        subtitle="Space Exploration Technologies Corp. is an American aerospace manufacturer and space transportation services company headquartered in Hawthorne, California. It was founded in 2002."
         image={img}
       />
       <Wave color="white" />

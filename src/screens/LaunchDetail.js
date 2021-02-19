@@ -2,6 +2,7 @@ import { useEffect, Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
+import Button from "../components/UI/Button";
 
 const LaunchDetail = (props) => {
   const { flightNumber } = useParams();
@@ -54,14 +55,20 @@ const LaunchDetail = (props) => {
             {launch && launch.details}
           </div>
 
-          <div className="flex items-end h-full justify-center xl:justify-start mt-7">
-            <a
+          <div className="flex items-end h-full justify-center xl:justify-start mt-7 gap-8">
+            <Button
               href={launch?.links.wikipedia}
-              className="border text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-xl focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              target="_blank"
+              disable={!launch?.links.video_link}
             >
-              More
-            </a>
+              Wikipedia
+            </Button>
+
+            <Button
+              href={launch?.links.video_link}
+              disable={!launch?.links.video_link}
+            >
+              Youtube
+            </Button>
           </div>
         </div>
       </div>

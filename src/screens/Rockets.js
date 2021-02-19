@@ -10,8 +10,8 @@ const Rockets = (props) => {
   return (
     <Fragment>
       <Hero
-        title="Discover all spaceX rockets"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione adipisci, quod nisi expedita a reiciendis pariatur quos nesciunt tempora exercitationem iusto esse cum sapiente repudiandae modi, sint quia eaque."
+        title="Discover all SpaceX Rockets"
+        subtitle="A rocket is a missile, spacecraft, aircraft or other vehicle that obtains thrust from a rocket engine. "
         image={img}
       />
       <Wave color="white" />

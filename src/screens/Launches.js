@@ -8,30 +8,34 @@ import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 
+const URL = "https://api.spacexdata.com/v3/launches";
 const LIMIT = 4;
 const FIRST_PAGE = 1;
 
 const Launches = (props) => {
-  const [launches, setLaunches] = useState();
+  const [launches, setLaunches] = useState([]);
   const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
   const [lastPage, setLastPage] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const [rocketName, setRocketName] = useState("");
-
-  const fetchLaunches = useCallback(async () => {
-    const response = await fetch(
-      `https://api.spacexdata.com/v3/launches?id=true&limit=${LIMIT}&offset=${
-        (currentPage - 1) * LIMIT
-      }&rocket_name=${rocketName}`
-    );
-    const data = await response.json();
-    setLaunches(data);
-    setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
-  }, [currentPage, rocketName]);
+  const [launchYear, setLaunchYear] = useState("");
+  const [launchSuccess, setLaunchSuccess] = useState("");
 
   useEffect(() => {
+    const fetchLaunches = async () => {
+      setIsLoading(true);
+      const offset = (currentPage - 1) * LIMIT;
+      const response = await fetch(
+        `${URL}?id=true&limit=${LIMIT}&offset=${offset}&rocket_name=${rocketName}&launch_year=${launchYear}&launch_success=${launchSuccess}`
+      );
+      const data = await response.json();
+      setLaunches(data);
+      setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
+      setIsLoading(false);
+    };
     fetchLaunches();
-  }, [fetchLaunches]);
+  }, [currentPage, rocketName, launchYear, launchSuccess]);
 
   const pageChangeHandler = (page) => {
     if (page >= 1 && page <= lastPage) {
@@ -39,16 +43,22 @@ const Launches = (props) => {
     }
   };
 
-  const rocketNameChangeHandler = (event) => {
-    setRocketName(event.target.value);
+  const filterChangeHandler = (type, event) => {
     setCurrentPage(1);
+    if (type === "rocketName") {
+      setRocketName(event.target.value);
+    } else if (type === "launchYear") {
+      setLaunchYear(event.target.value);
+    } else if (type === "launchSuccess") {
+      setLaunchSuccess(event.target.value);
+    }
   };
 
   return (
     <div>
       <Hero
-        title="Discover all spaceX launches"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione adipisci, quod nisi expedita a reiciendis pariatur quos nesciunt tempora exercitationem iusto esse cum sapiente repudiandae modi, sint quia eaque."
+        title="Discover all SpaceX Launches"
+        subtitle="The Falcon design features reusable first-stage boosters, which land either on a ground pad near the launch site or on a drone ship at sea. In December 2015, Falcon 9 became the first rocket to land propulsively after delivering a payload to orbit. "
         image={img}
       />
 
@@ -56,9 +66,9 @@ const Launches = (props) => {
 
       <Title message="Launches" />
 
-      <Filter rocketNameChangeHandler={rocketNameChangeHandler} />
+      <Filter filterChangeHandler={filterChangeHandler} />
 
-      <LaunchList launches={launches} />
+      <LaunchList launches={launches} isLoading={isLoading} />
 
       <Pagination
         pageChangeHandler={pageChangeHandler}

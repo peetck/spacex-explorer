@@ -6,7 +6,7 @@ const NavItem = ({ path, exact, children }) => {
       <NavLink
         to={path}
         className="block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker md:inline-block"
-        activeClassName="font-bold"
+        activeClassName="font-black"
         exact={exact}
       >
         {children}

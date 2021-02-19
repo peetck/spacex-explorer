@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import RocketsContext from "../contexts/RocketsContext";
-import Title from "../components/UI/Title";
+import Button from "../components/UI/Button";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
@@ -60,13 +60,7 @@ const RocketDetail = (props) => {
           </div>
 
           <div className="flex items-end h-full justify-center xl:justify-start mt-7">
-            <a
-              href={rocket?.wikipedia}
-              className="border text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-xl focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              target="_blank"
-            >
-              More
-            </a>
+            <Button href={rocket?.wikipedia}>Wikipedia</Button>
           </div>
         </div>
       </div>
