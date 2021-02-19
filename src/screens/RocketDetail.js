@@ -30,7 +30,7 @@ const RocketDetail = (props) => {
       <div className="flex flex-col justify-around mt-32 xl:flex-row">
         <div className="w-full">
           <img
-            className="mx-auto w-1/2 shadow-2xl rounded-2xl xl:w-2/3"
+            className="mx-auto shadow-2xl rounded-2xl w-3/5"
             src={rocket && rocket ? rocket.flickr_images[0] : ""}
             alt="Can't load img"
           />
@@ -63,6 +63,7 @@ const RocketDetail = (props) => {
             <a
               href={rocket?.wikipedia}
               className="border text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-xl focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              target="_blank"
             >
               More
             </a>
