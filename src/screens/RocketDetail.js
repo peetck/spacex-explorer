@@ -1,4 +1,4 @@
-import { useContext, useState, Fragment } from "react";
+import { useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
@@ -7,21 +7,10 @@ import Button from "../components/UI/Button";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
-  const [wikiIsVisible, setWikiIsVisible] = useState(false);
-  const [dataIsVisible, setDataIsVisible] = useState(true);
 
   const { getRocket } = useContext(RocketsContext);
 
   const rocket = getRocket(rocketId);
-
-  const wikiClick = () => {
-    setWikiIsVisible(true);
-    setDataIsVisible(false);
-  };
-  const dataClick = () => {
-    setWikiIsVisible(false);
-    setDataIsVisible(true);
-  };
 
   return (
     <Fragment>

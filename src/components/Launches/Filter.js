@@ -2,7 +2,12 @@ import { useContext } from "react";
 
 import RocketsContext from "../../contexts/RocketsContext";
 
-const Filter = ({ filterChangeHandler }) => {
+const Filter = ({
+  filterChangeHandler,
+  rocketName,
+  launchYear,
+  launchSuccess,
+}) => {
   const { rockets } = useContext(RocketsContext);
 
   const currentYear = new Date().getFullYear();
@@ -12,6 +17,7 @@ const Filter = ({ filterChangeHandler }) => {
       <label className="block">
         <span className="text-gray-700">Rocket name</span>
         <select
+          value={rocketName}
           onChange={(e) => filterChangeHandler("rocketName", e)}
           className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         >
@@ -27,21 +33,28 @@ const Filter = ({ filterChangeHandler }) => {
       <label className="block">
         <span className="text-gray-700">Launch year</span>
         <select
+          value={launchYear}
           onChange={(e) => filterChangeHandler("launchYear", e)}
           className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         >
           <option value="">All</option>
           {[...Array(currentYear - 2001 + 1).keys()]
             .sort((a, b) => b - a)
-            .map((year) => (
-              <option value={year + 2001}>{year + 2001}</option>
-            ))}
+            .map((item) => {
+              const year = item;
+              return (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              );
+            })}
         </select>
       </label>
 
       <label className="block">
         <span className="text-gray-700">Launch success</span>
         <select
+          value={launchSuccess}
           onChange={(e) => filterChangeHandler("launchSuccess", e)}
           className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         >

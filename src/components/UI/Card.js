@@ -8,7 +8,7 @@ const Card = ({ title, active, imageUrl, date, to, details, isLoading }) => {
     <div
       className={`flex flex-col cursor-pointer shadow-lg rounded-md w-80 p-3 mx-16 mt-16 transition duration-2000 transform hover:-rotate-3 hover:shadow-2xl`}
     >
-      <Link to={to}>
+      <Link to={to ?? "#"}>
         <div className="group relative">
           {isLoading ? (
             <div className="w-full h-72 rounded-3xl"></div>

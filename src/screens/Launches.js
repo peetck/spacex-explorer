@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
@@ -66,7 +66,12 @@ const Launches = (props) => {
 
       <Title message="Launches" />
 
-      <Filter filterChangeHandler={filterChangeHandler} />
+      <Filter
+        filterChangeHandler={filterChangeHandler}
+        rocketName={rocketName}
+        launchYear={launchYear}
+        launchSuccess={launchSuccess}
+      />
 
       <LaunchList launches={launches} isLoading={isLoading} />
 

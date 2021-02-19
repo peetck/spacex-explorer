@@ -8,6 +8,7 @@ const Button = (props) => {
           : "text-gray-800 shadow-xl focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
       }`}
       target="_blank"
+      rel="noreferrer"
     >
       {props.children}
     </a>

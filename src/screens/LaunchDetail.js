@@ -17,7 +17,7 @@ const LaunchDetail = (props) => {
       setLaunch(data);
     };
     fetchLaunch();
-  }, []);
+  }, [flightNumber]);
 
   return (
     <Fragment>
