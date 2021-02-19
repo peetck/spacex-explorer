@@ -41,7 +41,7 @@ const Filter = ({
           {[...Array(currentYear - 2001 + 1).keys()]
             .sort((a, b) => b - a)
             .map((item) => {
-              const year = item;
+              const year = item + 2001;
               return (
                 <option key={year} value={year}>
                   {year}
