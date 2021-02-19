@@ -15,7 +15,7 @@ const Filter = ({ rocketNameChangeHandler }) => {
         >
           <option value="">-----</option>
           {rockets.map((item) => (
-            <option key={item._id} value={item.rocket_name}>
+            <option key={item.rocket_name} value={item.rocket_name}>
               {item.rocket_name}
             </option>
           ))}

@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import RocketsContext from "../contexts/RocketsContext";
+import Title from "../components/UI/Title";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
@@ -23,63 +24,54 @@ const RocketDetail = (props) => {
   };
 
   return (
-    <div className="h-screen">
+    <Fragment>
       <Wave color="white" />
-      {/* <h1>{rocket && rocket ? rocket.rocket_name : ""}</h1> */}
-      <div className="text-center">
-        <button
-          className={`bg-grey ${
-            dataIsVisible ? "bg-gray-500" : ""
-          } font-bold py-2 px-4 shadow -mr-1 border border-gray-200 m-4`}
-          onClick={dataClick}
-        >
-          Data
-        </button>
-        <button
-          className={`bg-grey ${
-            wikiIsVisible ? "bg-gray-500" : ""
-          } font-bold py-2 px-4 rounded-r rounded-lg  border border-gray-200 m-4`}
-          onClick={wikiClick}
-        >
-          Wiki
-        </button>
-      </div>
-      {dataIsVisible ? (
-        <div className="grid grid-cols-2 gap-14">
-          <div>
-            <img
-              className="m-auto w-8/12 h-8/12 shadow-2xl "
-              src={rocket && rocket ? rocket.flickr_images[0] : ""}
-              alt="Can't load img"
-            />
+
+      <div className="flex flex-col justify-around mt-32 xl:flex-row">
+        <div className="w-full">
+          <img
+            className="mx-auto w-1/2 shadow-2xl rounded-2xl xl:w-2/3"
+            src={rocket && rocket ? rocket.flickr_images[0] : ""}
+            alt="Can't load img"
+          />
+        </div>
+
+        <div className="flex flex-col w-full text-center mb-10 xl:text-left ">
+          <div className="flex items-center justify-center w-full mt-7 mb-7 xl:mt-0 xl:justify-start">
+            <h1 className="text-5xl font-bold my-5">
+              {rocket && rocket.rocket_name}
+            </h1>
+            <span className="relative  rounded-md shadow-sm ml-8 hidden xl:inline-flex">
+              <span
+                className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                  rocket?.active ? "bg-green-500" : "bg-red-500"
+                } opacity-75`}
+              />
+              <span
+                className={`relative inline-flex rounded-full h-6 w-6 ${
+                  rocket?.active ? "bg-green-500" : "bg-red-500"
+                }`}
+              />
+            </span>
           </div>
-          <div className="m-auto mr-64">
-            {rocket && rocket ? rocket.description : ""}
+
+          <div className="text-center mx-20 xl:mx-0 xl:w-2/3 xl:text-left ">
+            {rocket && rocket.description}
+          </div>
+
+          <div className="flex items-end h-full justify-center xl:justify-start mt-7">
+            <a
+              href={rocket?.wikipedia}
+              className="border text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-xl focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+            >
+              More
+            </a>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-
-      {/* <img
-        className="mr-auto m-14 w-2/5 h-3/5 shadow-2xl "
-        src={rocket && rocket ? rocket.flickr_images[0] : ""}
-      ></img> */}
-      {wikiIsVisible ? (
-        <iframe
-          className="mx-auto border border-gray-400"
-          // id="inlineFrameExample"
-          title="Inline Frame Example"
-          width="60%"
-          height="80%"
-          src={rocket && rocket ? rocket.wikipedia : ""}
-        />
-      ) : (
-        ""
-      )}
+      </div>
 
       <Wave color="black" />
-    </div>
+    </Fragment>
   );
 };
 
