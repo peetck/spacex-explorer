@@ -10,7 +10,7 @@ const LaunchList = ({ launches }) => {
             to={`/launches/${launch.flight_number}`}
             title={launch.mission_name}
             date={launch.launch_date_utc}
-            imageUrl={launch.links.mission_patch}
+            imageUrl={launch.links.mission_patch_small}
             active={launch.launch_success}
             details={launch.details}
           />
