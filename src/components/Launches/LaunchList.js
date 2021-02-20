@@ -1,18 +1,20 @@
+import { Fragment } from "react";
+
 import Card from "../UI/Card";
 
 const LaunchList = ({ launches, isLoading }) => {
   return (
     <div className="flex flex-wrap justify-center ">
       {isLoading ? (
-        <>
+        <Fragment>
           <Card isLoading={isLoading} />
           <Card isLoading={isLoading} />
           <Card isLoading={isLoading} />
           <Card isLoading={isLoading} />
-        </>
+        </Fragment>
       ) : launches.length === 0 ? (
         <div className="flex justify-center items-center w-full h-96 container mt-10">
-          <h1 className='text-2xl'>No Launches Found.</h1>
+          <h1 className="text-2xl">No Launches Found.</h1>
         </div>
       ) : (
         launches.map((launch) => (

@@ -1,9 +1,10 @@
-import { useContext, Fragment } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import RocketsContext from "../contexts/RocketsContext";
 import Detail from "../components/UI/Detail";
+import Screen from "../components/UI/Screen";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
@@ -13,7 +14,7 @@ const RocketDetail = (props) => {
   const rocket = getRocket(rocketId);
 
   return (
-    <Fragment>
+    <Screen>
       <Wave color="white" />
 
       <Detail
@@ -22,10 +23,11 @@ const RocketDetail = (props) => {
         active={rocket?.active}
         imageUrl={rocket?.flickr_images[0]}
         wikipedia={rocket?.wikipedia}
+        isLoading={!rocket}
       />
 
       <Wave color="black" />
-    </Fragment>
+    </Screen>
   );
 };
 

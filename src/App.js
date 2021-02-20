@@ -1,12 +1,14 @@
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
 import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
-import Launches from "./screens/Launches";
-import LaunchDetail from "./screens/LaunchDetail";
-import Rockets from "./screens/Rockets";
-import RocketDetail from "./screens/RocketDetail";
+
+const Launches = React.lazy(() => import("./screens/Launches"));
+const LaunchDetail = React.lazy(() => import("./screens/LaunchDetail"));
+const Rockets = React.lazy(() => import("./screens/Rockets"));
+const RocketDetail = React.lazy(() => import("./screens/RocketDetail"));
 
 const App = () => {
   const routes = (
@@ -31,10 +33,18 @@ const App = () => {
 
   return (
     <RocketsContextProvider>
-      <Router basename={process.env.PUBLIC_URL}>
-        <Nav />
-        {routes}
-      </Router>
+      <Suspense
+        fallback={
+          <div className="w-screen h-screen flex justify-center items-center text-xl">
+            Loading...
+          </div>
+        }
+      >
+        <Router basename={process.env.PUBLIC_URL}>
+          <Nav />
+          {routes}
+        </Router>
+      </Suspense>
     </RocketsContextProvider>
   );
 };
