@@ -9,7 +9,7 @@ import Screen from "../components/UI/Screen";
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
 
-  const { getRocket } = useContext(RocketsContext);
+  const { getRocket, isLoading } = useContext(RocketsContext);
 
   const rocket = getRocket(rocketId);
 
@@ -23,7 +23,7 @@ const RocketDetail = (props) => {
         active={rocket?.active}
         imageUrl={rocket?.flickr_images[0]}
         wikipedia={rocket?.wikipedia}
-        isLoading={!rocket}
+        isLoading={isLoading}
       />
 
       <Wave color="black" />

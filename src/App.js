@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
+import { LaunchesContextProvider } from "./contexts/LaunchesContext";
 import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
 
@@ -33,18 +34,20 @@ const App = () => {
 
   return (
     <RocketsContextProvider>
-      <Suspense
-        fallback={
-          <div className="w-screen h-screen flex justify-center items-center text-xl">
-            Loading...
-          </div>
-        }
-      >
-        <Router basename={process.env.PUBLIC_URL}>
-          <Nav />
-          {routes}
-        </Router>
-      </Suspense>
+      <LaunchesContextProvider>
+        <Suspense
+          fallback={
+            <div className="w-screen h-screen flex justify-center items-center text-xl">
+              Loading...
+            </div>
+          }
+        >
+          <Router basename={process.env.PUBLIC_URL}>
+            <Nav />
+            {routes}
+          </Router>
+        </Suspense>
+      </LaunchesContextProvider>
     </RocketsContextProvider>
   );
 };

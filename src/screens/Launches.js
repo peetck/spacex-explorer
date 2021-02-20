@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
@@ -8,52 +8,19 @@ import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 import Screen from "../components/UI/Screen";
-
-const URL = "https://api.spacexdata.com/v3/launches";
-const LIMIT = 4;
-const FIRST_PAGE = 1;
+import LaunchesContext from "../contexts/LaunchesContext";
 
 const Launches = (props) => {
-  const [launches, setLaunches] = useState([]);
-  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
-  const [lastPage, setLastPage] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [rocketName, setRocketName] = useState("");
-  const [launchYear, setLaunchYear] = useState("");
-  const [launchSuccess, setLaunchSuccess] = useState("");
-
-  useEffect(() => {
-    const fetchLaunches = async () => {
-      setIsLoading(true);
-      const offset = (currentPage - 1) * LIMIT;
-      const response = await fetch(
-        `${URL}?id=true&limit=${LIMIT}&offset=${offset}&rocket_name=${rocketName}&launch_year=${launchYear}&launch_success=${launchSuccess}`
-      );
-      const data = await response.json();
-      setLaunches(data);
-      setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
-      setIsLoading(false);
-    };
-    fetchLaunches();
-  }, [currentPage, rocketName, launchYear, launchSuccess]);
-
-  const pageChangeHandler = (page) => {
-    if (page >= 1 && page <= lastPage) {
-      setCurrentPage(page);
-    }
-  };
-
-  const filterChangeHandler = (type, event) => {
-    setCurrentPage(1);
-    if (type === "rocketName") {
-      setRocketName(event.target.value);
-    } else if (type === "launchYear") {
-      setLaunchYear(event.target.value);
-    } else if (type === "launchSuccess") {
-      setLaunchSuccess(event.target.value);
-    }
-  };
+  const {
+    launches,
+    FIRST_PAGE,
+    currentPage,
+    lastPage,
+    isLoading,
+    filter,
+    pageChangeHandler,
+    filterChangeHandler,
+  } = useContext(LaunchesContext);
 
   return (
     <Screen>
@@ -69,9 +36,9 @@ const Launches = (props) => {
 
       <Filter
         filterChangeHandler={filterChangeHandler}
-        rocketName={rocketName}
-        launchYear={launchYear}
-        launchSuccess={launchSuccess}
+        rocketName={filter.rocketName}
+        launchYear={filter.launchYear}
+        launchSuccess={filter.launchSuccess}
       />
 
       <LaunchList launches={launches} isLoading={isLoading} />
