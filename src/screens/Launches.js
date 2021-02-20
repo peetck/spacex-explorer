@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
@@ -8,19 +9,72 @@ import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 import Screen from "../components/UI/Screen";
-import LaunchesContext from "../contexts/LaunchesContext";
+import useQuery from "../hooks/query";
+
+const URL = "https://api.spacexdata.com/v3/launches";
+const LIMIT = 4;
+const FIRST_PAGE = 1;
 
 const Launches = (props) => {
-  const {
-    launches,
-    FIRST_PAGE,
-    currentPage,
-    lastPage,
-    isLoading,
-    filter,
-    pageChangeHandler,
-    filterChangeHandler,
-  } = useContext(LaunchesContext);
+  const history = useHistory();
+  const query = useQuery();
+
+  const [launches, setLaunches] = useState([]);
+  const [currentPage, setCurrentPage] = useState(
+    query.has("page") ? +query.get("page") : FIRST_PAGE
+  );
+  const [lastPage, setLastPage] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [rocketName, setRocketName] = useState(
+    query.has("rocketName") ? query.get("rocketName") : ""
+  );
+  const [launchYear, setLaunchYear] = useState(
+    query.has("launchYear") ? query.get("launchYear") : ""
+  );
+  const [launchSuccess, setLaunchSuccess] = useState(
+    query.has("launchSuccess") ? query.get("launchSuccess") : ""
+  );
+
+  useEffect(() => {
+    const fetchLaunches = async () => {
+      setIsLoading(true);
+      const offset = (currentPage - 1) * LIMIT;
+      const response = await fetch(
+        `${URL}?id=true&limit=${LIMIT}&offset=${offset}&rocket_name=${rocketName}&launch_year=${launchYear}&launch_success=${launchSuccess}`
+      );
+      const data = await response.json();
+      setLaunches(data);
+      setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
+      setIsLoading(false);
+    };
+    fetchLaunches();
+  }, [currentPage, rocketName, launchYear, launchSuccess]);
+
+  const pageChangeHandler = (page) => {
+    if (page >= 1 && page <= lastPage) {
+      setCurrentPage(page);
+      query.set("page", page);
+      history.replace({
+        search: query.toString(),
+      });
+    }
+  };
+
+  const filterChangeHandler = (type, event) => {
+    setCurrentPage(1);
+    if (type === "rocketName") {
+      setRocketName(event.target.value);
+    } else if (type === "launchYear") {
+      setLaunchYear(event.target.value);
+    } else if (type === "launchSuccess") {
+      setLaunchSuccess(event.target.value);
+    }
+    query.set(type, event.target.value);
+    query.set("page", 1);
+    history.replace({
+      search: query.toString(),
+    });
+  };
 
   return (
     <Screen>
@@ -36,9 +90,9 @@ const Launches = (props) => {
 
       <Filter
         filterChangeHandler={filterChangeHandler}
-        rocketName={filter.rocketName}
-        launchYear={filter.launchYear}
-        launchSuccess={filter.launchSuccess}
+        rocketName={rocketName}
+        launchYear={launchYear}
+        launchSuccess={launchSuccess}
       />
 
       <LaunchList launches={launches} isLoading={isLoading} />

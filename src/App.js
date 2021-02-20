@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
-import { LaunchesContextProvider } from "./contexts/LaunchesContext";
 import Nav from "./components/Navigation/Nav";
 import Home from "./screens/Home";
 
@@ -23,31 +22,27 @@ const App = () => {
       <Route path="/rockets/:rocketId">
         <RocketDetail />
       </Route>
-      <Route path="/launches" exact>
-        <Launches />
-      </Route>
+      <Route path="/launches" exact render={() => <Launches />}></Route>
       <Route path="/launches/:flightNumber">
         <LaunchDetail />
       </Route>
     </Switch>
   );
 
+  const fallback = (
+    <div className="w-screen h-screen flex justify-center items-center text-xl">
+      Loading...
+    </div>
+  );
+
   return (
     <RocketsContextProvider>
-      <LaunchesContextProvider>
-        <Suspense
-          fallback={
-            <div className="w-screen h-screen flex justify-center items-center text-xl">
-              Loading...
-            </div>
-          }
-        >
-          <Router basename={process.env.PUBLIC_URL}>
-            <Nav />
-            {routes}
-          </Router>
-        </Suspense>
-      </LaunchesContextProvider>
+      <Suspense fallback={fallback}>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Nav />
+          {routes}
+        </Router>
+      </Suspense>
     </RocketsContextProvider>
   );
 };
