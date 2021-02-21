@@ -27,51 +27,38 @@ const Rocket = ({
           />
         </span>
       </h1>
-      <div className="flex flex-col items-center my-14 mx-20 xl:flex-row">
+      <div className="flex flex-col items-center my-14 mx-20 text-center sm:text-left xl:flex-row">
         <div className="flex flex-col w-full xl:w-1/2">
           <h1 className="text-4xl font-bold my-8">Description</h1>
           <p className="text-base">{description}</p>
 
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
               <h1 className="text-3xl my-8">Country</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {country}
-              </span>
+              <span className="">{country}</span>
             </div>
-            <div className="w-3/4">
+            <div className="w-full sm:w-3/4">
               <h1 className="text-3xl my-8">First Flight</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
+              <span className="">
                 {new Date(firstFlight).toLocaleDateString("en-GB")}
               </span>
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
               <h1 className="text-3xl my-8">Diameter</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                <CountUp
-                  start={-50}
-                  end={diameter}
-                  duration={1.75}
-                  decimals={1}
-                />{" "}
-                meter
-              </span>
+              {diameter && (
+                <CountUp end={diameter} duration={2} decimals={1} />
+              )}{" "}
+              meter
             </div>
-            <div className="w-3/4">
+            <div className="w-full sm:w-3/4">
               <h1 className="text-3xl my-8">Height</h1>
-
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                <CountUp
-                  start={-50}
-                  end={height}
-                  duration={1.75}
-                  decimals={1}
-                />
-                meter
-              </span>
+              {height && (
+                <CountUp end={height} duration={2} decimals={1} />
+              )}{" "}
+              meter
             </div>
           </div>
         </div>

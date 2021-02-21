@@ -27,8 +27,10 @@ const LaunchDetail = (props) => {
 
       <Launch
         missionName={launch?.mission_name}
+        launchSuccess={launch?.launch_success}
         details={launch?.details}
         youtubeUrl={launch?.links?.youtube_id}
+        launchSite={launch?.launch_site?.site_name_long}
         launchDate={launch?.launch_date_utc}
         rocketName={launch?.rocket?.rocket_name}
       />

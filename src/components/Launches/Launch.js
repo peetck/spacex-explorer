@@ -2,6 +2,7 @@ const Launch = ({
   missionName,
   launchSuccess,
   details,
+  launchSite,
   launchDate,
   youtubeUrl,
   rocketName,
@@ -35,28 +36,24 @@ const Launch = ({
           <p className="text-base">{details ?? "Loading..."}</p>
 
           <div className="flex flex-col justify-between sm:flex-row">
-            <div className="w-full">
-              <h1 className="text-3xl my-8">Country</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {"country" ?? "Loading..."}
-              </span>
+            <div className="w-full mr-5">
+              <h1 className="text-3xl my-8">Launch Site</h1>
+              {launchSite ?? "Loading..."}
             </div>
             <div className="w-full sm:w-3/4">
               <h1 className="text-3xl my-8">Launch Date</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {launchDate
-                  ? new Date(launchDate).toLocaleDateString("en-GB")
-                  : "Loading..."}
-              </span>
+
+              {launchDate
+                ? new Date(launchDate).toLocaleDateString("en-GB")
+                : "Loading..."}
             </div>
           </div>
 
           <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
-              <h1 className="text-3xl my-8">Rocket</h1>
-              <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {rocketName ?? "Loading..."}
-              </span>
+              <h1 className="text-3xl my-8 ">Rocket</h1>
+
+              <span className='text-blue-500'>{rocketName ?? "Loading..."}</span>
             </div>
           </div>
         </div>
