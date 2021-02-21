@@ -2,24 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
-import Detail from "../components/UI/Detail";
 import Screen from "../components/UI/Screen";
+import Launch from "../components/Launches/Launch";
 
 const LaunchDetail = (props) => {
   const { flightNumber } = useParams();
 
   const [launch, setLaunch] = useState();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchLaunch = async () => {
-      setIsLoading(true);
       const response = await fetch(
         `https://api.spacexdata.com/v3/launches/${flightNumber}`
       );
       const data = await response.json();
       setLaunch(data);
-      setIsLoading(false);
     };
     fetchLaunch();
   }, [flightNumber]);
@@ -28,14 +25,12 @@ const LaunchDetail = (props) => {
     <Screen>
       <Wave color="white" />
 
-      <Detail
-        title={launch?.mission_name}
-        description={launch?.details}
-        active={launch?.launch_success}
-        imageUrl={launch?.links.mission_patch_small}
-        wikipedia={launch?.links.wikipedia}
-        videoLink={launch?.links.video_link}
-        isLoading={isLoading}
+      <Launch
+        missionName={launch?.mission_name}
+        details={launch?.details}
+        youtubeUrl={launch?.links?.youtube_id}
+        launchDate={launch?.launch_date_utc}
+        rocketName={launch?.rocket?.rocket_name}
       />
 
       <Wave color="black" />
