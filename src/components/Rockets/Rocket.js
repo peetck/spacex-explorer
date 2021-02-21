@@ -69,8 +69,10 @@ const Rocket = ({
 
         <div className="w-full xl:ml-20 xl:w-1/2">
           <Image
-            className="w-full mt-16 rounded-lg xl:mx-12 xl:mt-5"
+            className="w-full mt-16 rounded-lg hidden sm:block xl:mx-12 xl:mt-5"
             src={imageUrl}
+            width="640px"
+            height="480px"
           />
         </div>
       </div>

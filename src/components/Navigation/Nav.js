@@ -13,7 +13,7 @@ const Nav = () => {
         className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest"
         to="/"
       >
-        <Image className="h-10 mr-2 w-10" src={FAVICON} />
+        <Image className="h-10 mr-2 w-10" src={FAVICON} width='40px' height="40px" />
 
         <span className="font-semibold text-xl tracking-tight">
           SpaceX Explorer

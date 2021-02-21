@@ -11,7 +11,7 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
       }}
     >
       <Link to={to ?? "#"}>
-        <Image className="m-auto object-cover h-72" src={imageUrl} />
+        <Image className="m-auto object-cover h-72" src={imageUrl} width="320px" height="288px" />
 
         <div className="p-5">
           <div className="flex items-center justify-between">
