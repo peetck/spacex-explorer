@@ -14,7 +14,6 @@ const Image = (props) => {
         height: height,
       }}
       onError={(e) => {
-        e.target.onerror = null;
         e.target.src = NO_IMAGE;
       }}
     />
