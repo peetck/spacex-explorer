@@ -1,3 +1,5 @@
+import Lottie from "lottie-react";
+
 const Hero = ({ title, subtitle, image }) => {
   return (
     <div className="w-full bg-black text-white">
@@ -8,7 +10,7 @@ const Hero = ({ title, subtitle, image }) => {
         </div>
 
         <div className="flex w-full md:w-3/5">
-          <img className="w-full z-10 " src={image} alt="Can't load img" />
+          <Lottie animationData={image} />
         </div>
       </div>
     </div>

@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import Hero from "../components/UI/Hero";
-import img from "../assets/images/launches.svg";
 import LaunchList from "../components/Launches/LaunchList";
 import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 import Screen from "../components/UI/Screen";
 import useQuery from "../hooks/query";
+import heroImage from "../assets/images/Login Colored.json";
 
 const URL = "https://api.spacexdata.com/v3/launches";
 const LIMIT = 4;
@@ -81,7 +81,7 @@ const Launches = (props) => {
       <Hero
         title="Discover all SpaceX Launches"
         subtitle="The Falcon design features reusable first-stage boosters, which land either on a ground pad near the launch site or on a drone ship at sea. In December 2015, Falcon 9 became the first rocket to land propulsively after delivering a payload to orbit. "
-        image={img}
+        image={heroImage}
       />
 
       <Wave color="white" />

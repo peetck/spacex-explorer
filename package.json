@@ -9,6 +9,7 @@
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@trendmicro/react-iframe": "^1.0.1",
     "autoprefixer": "^9.8.6",
+    "lottie-react": "^2.1.0",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-countup": "^4.3.3",
