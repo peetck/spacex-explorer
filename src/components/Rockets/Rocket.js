@@ -1,5 +1,5 @@
 import CountUp from "react-countup";
-import TypeWriterEffect from "react-typewriter-effect";
+// import TypeWriterEffect from "react-typewriter-effect";
 
 const Rocket = ({
   name,
@@ -31,13 +31,14 @@ const Rocket = ({
       <div className="flex flex-col items-center my-14 mx-20 text-center sm:text-left xl:flex-row">
         <div className="flex flex-col w-full xl:w-1/2">
           <h1 className="text-4xl font-bold my-8">Description</h1>
-          <TypeWriterEffect
+          <p className="text-base">{description}</p>
+          {/* <TypeWriterEffect
             startDelay={100}
             cursorColor="black"
             text={description}
             typeSpeed={40}
             hideCursorAfterText={true}
-          />
+          /> */}
 
           <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
