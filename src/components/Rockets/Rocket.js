@@ -1,3 +1,5 @@
+import CountUp from "react-countup";
+
 const Rocket = ({
   name,
   active,
@@ -49,14 +51,14 @@ const Rocket = ({
             <div className="w-full">
               <h1 className="text-3xl my-8">Diameter</h1>
               <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {diameter} meter
+                <CountUp end={diameter} duration={1.75} /> meter
               </span>
             </div>
             <div className="w-3/4">
               <h1 className="text-3xl my-8">Height</h1>
 
               <span className="py-2 px-4 rounded-full shadow-2xl border">
-                {height} meter
+                <CountUp end={height} duration={1.75} /> meter
               </span>
             </div>
           </div>
