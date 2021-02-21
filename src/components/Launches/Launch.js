@@ -51,7 +51,7 @@ const Launch = ({ launch }) => {
 
               {launch?.rocket?.rocket_name ? (
                 <Link
-                  className="text-blue-500"
+                  className="text-blue-600"
                   to={`/rockets/${launch?.rocket.rocket_id}`}
                 >
                   {launch?.rocket?.rocket_name}
@@ -65,7 +65,7 @@ const Launch = ({ launch }) => {
               {launch ? (
                 launch?.links?.wikipedia ? (
                   <a
-                    className="text-blue-500"
+                    className="text-blue-600"
                     href={launch?.links?.wikipedia}
                     target="_blank"
                     rel="noreferrer"
