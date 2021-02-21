@@ -1,11 +1,11 @@
 import Lottie from "lottie-react";
 
-import loader from "../../assets/images/loader.json";
+import loaderAnimation from "../../assets/animations/loader.json";
 
 const Loader = () => {
   return (
     <div className="flex w-96 h-96">
-      <Lottie animationData={loader} />
+      <Lottie animationData={loaderAnimation} />
     </div>
   );
 };

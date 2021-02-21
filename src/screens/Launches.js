@@ -9,7 +9,7 @@ import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 import Screen from "../components/UI/Screen";
 import useQuery from "../hooks/query";
-import heroImage from "../assets/images/Login Colored.json";
+import heroAnimation from "../assets/animations/launches.json";
 
 const URL = "https://api.spacexdata.com/v3/launches";
 const LIMIT = 4;
@@ -37,15 +37,21 @@ const Launches = (props) => {
 
   useEffect(() => {
     const fetchLaunches = async () => {
-      setIsLoading(true);
-      const offset = (currentPage - 1) * LIMIT;
-      const response = await fetch(
-        `${URL}?id=true&limit=${LIMIT}&offset=${offset}&rocket_name=${rocketName}&launch_year=${launchYear}&launch_success=${launchSuccess}`
-      );
-      const data = await response.json();
-      setLaunches(data);
-      setLastPage(Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT));
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const offset = (currentPage - 1) * LIMIT;
+        const response = await fetch(
+          `${URL}?id=true&limit=${LIMIT}&offset=${offset}&rocket_name=${rocketName}&launch_year=${launchYear}&launch_success=${launchSuccess}`
+        );
+        const data = await response.json();
+        setLaunches(data);
+        setLastPage(
+          Math.ceil(response.headers.get("Spacex-Api-Count") / LIMIT)
+        );
+        setIsLoading(false);
+      } catch (error) {
+        console.log(`Can't fetch launches from ${URL}`);
+      }
     };
     fetchLaunches();
   }, [currentPage, rocketName, launchYear, launchSuccess]);
@@ -81,29 +87,23 @@ const Launches = (props) => {
       <Hero
         title="Discover all SpaceX Launches"
         subtitle="The Falcon design features reusable first-stage boosters, which land either on a ground pad near the launch site or on a drone ship at sea. In December 2015, Falcon 9 became the first rocket to land propulsively after delivering a payload to orbit. "
-        image={heroImage}
+        image={heroAnimation}
       />
-
       <Wave color="white" />
-
       <Title message="Launches" />
-
       <Filter
         filterChangeHandler={filterChangeHandler}
         rocketName={rocketName}
         launchYear={launchYear}
         launchSuccess={launchSuccess}
       />
-
       <LaunchList launches={launches} isLoading={isLoading} />
-
       <Pagination
         pageChangeHandler={pageChangeHandler}
         firstPage={FIRST_PAGE}
         currentPage={currentPage}
         lastPage={lastPage}
       />
-
       <Wave color="black" />
     </Screen>
   );

@@ -1,5 +1,5 @@
-import CountUp from "react-countup";
-// import TypeWriterEffect from "react-typewriter-effect";
+import Image from "../UI/Image";
+import Loader from "../UI/Loader";
 
 const Rocket = ({
   name,
@@ -10,7 +10,16 @@ const Rocket = ({
   diameter,
   height,
   imageUrl,
+  isLoading,
 }) => {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center mt-14 container mx-auto">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto">
       <h1 className="flex justify-center w-full text-5xl font-bold leading-tight items-center my-14">
@@ -32,13 +41,6 @@ const Rocket = ({
         <div className="flex flex-col w-full xl:w-1/2">
           <h1 className="text-4xl font-bold my-8">Description</h1>
           <p className="text-base">{description}</p>
-          {/* <TypeWriterEffect
-            startDelay={100}
-            cursorColor="black"
-            text={description}
-            typeSpeed={40}
-            hideCursorAfterText={true}
-          /> */}
 
           <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
@@ -56,26 +58,19 @@ const Rocket = ({
           <div className="flex flex-col justify-between sm:flex-row">
             <div className="w-full">
               <h1 className="text-3xl my-8">Diameter</h1>
-              {diameter && (
-                <CountUp end={diameter} duration={2} decimals={1} />
-              )}{" "}
-              meter
+              {diameter} meter
             </div>
             <div className="w-full sm:w-3/4">
               <h1 className="text-3xl my-8">Height</h1>
-              {height && (
-                <CountUp end={height} duration={2} decimals={1} />
-              )}{" "}
-              meter
+              {height} meter
             </div>
           </div>
         </div>
 
         <div className="w-full xl:ml-20 xl:w-1/2">
-          <img
-            src={imageUrl}
-            alt="Can't load img"
+          <Image
             className="w-full mt-16 rounded-lg xl:mx-12 xl:mt-5"
+            src={imageUrl}
           />
         </div>
       </div>

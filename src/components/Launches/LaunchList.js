@@ -1,8 +1,7 @@
 import { Fragment } from "react";
-import Lottie from "lottie-react";
 
 import Card from "../UI/Card";
-import loader from "../../assets/images/loader.json";
+import Loader from "../UI/Loader";
 
 const LaunchList = ({ launches, isLoading }) => {
   return (
@@ -15,7 +14,7 @@ const LaunchList = ({ launches, isLoading }) => {
               height: "480px",
             }}
           >
-            <Lottie animationData={loader} />
+            <Loader />
           </div>
         </Fragment>
       ) : launches.length === 0 ? (

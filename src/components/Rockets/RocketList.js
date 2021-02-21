@@ -8,16 +8,18 @@ const RocketList = () => {
 
   return (
     <div className="flex flex-wrap justify-center ">
-      {rockets && rockets.map((rocket) => (
-        <Card
-          key={rocket.rocket_id}
-          to={`/rockets/${rocket.rocket_id}`}
-          title={rocket.rocket_name}
-          active={rocket.active}
-          imageUrl={rocket.flickr_images[0]}
-          date={rocket.first_flight}
-        />
-      ))}
+      {rockets &&
+        rockets.map((rocket) => (
+          <Card
+            key={rocket.rocket_id}
+            to={`/rockets/${rocket.rocket_id}`}
+            title={rocket.rocket_name}
+            active={rocket.active}
+            imageUrl={rocket.flickr_images[0]}
+            date={rocket.first_flight}
+            details={rocket.description}
+          />
+        ))}
     </div>
   );
 };

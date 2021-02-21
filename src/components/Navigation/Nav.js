@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import NavItem from "./NavItem";
 import "./Nav.css";
+import Image from "../UI/Image";
 
 const FAVICON = process.env.PUBLIC_URL + "/favicon.png";
 
@@ -12,7 +13,8 @@ const Nav = () => {
         className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest"
         to="/"
       >
-        <img src={FAVICON} alt="Can't fetch img" className="h-10 mr-2 w-10" />
+        <Image className="h-10 mr-2 w-10" src={FAVICON} />
+
         <span className="font-semibold text-xl tracking-tight">
           SpaceX Explorer
         </span>

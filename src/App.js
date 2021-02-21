@@ -1,11 +1,17 @@
 import React, { Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
 import Nav from "./components/Navigation/Nav";
-import Home from "./screens/Home";
+
 import Loader from "./components/UI/Loader";
 
+const Home = React.lazy(() => import("./screens/Home"));
 const Launches = React.lazy(() => import("./screens/Launches"));
 const LaunchDetail = React.lazy(() => import("./screens/LaunchDetail"));
 const Rockets = React.lazy(() => import("./screens/Rockets"));
@@ -28,6 +34,9 @@ const App = () => {
       </Route>
       <Route path="/launches/:flightNumber">
         <LaunchDetail />
+      </Route>
+      <Route>
+        <Redirect to="/" />
       </Route>
     </Switch>
   );

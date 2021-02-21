@@ -2,14 +2,20 @@ import { createContext, useState, useEffect } from "react";
 
 const RocketsContext = createContext();
 
+const URL = "https://api.spacexdata.com/v3/rockets";
+
 export const RocketsContextProvider = (props) => {
   const [rockets, setRockets] = useState([]);
 
   useEffect(() => {
     const fetchRockets = async () => {
-      const response = await fetch("https://api.spacexdata.com/v3/rockets");
-      const data = await response.json();
-      setRockets(data);
+      try {
+        const response = await fetch(URL);
+        const data = await response.json();
+        setRockets(data);
+      } catch (error) {
+        console.log(`Can't fetch rockets from ${URL}`);
+      }
     };
     fetchRockets();
   }, []);

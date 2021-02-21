@@ -26,9 +26,7 @@ const LaunchDetail = (props) => {
   return (
     <Screen>
       <Wave color="white" />
-
       <Launch launch={launch} isLoading={isLoading} />
-
       <Wave color="black" />
     </Screen>
   );

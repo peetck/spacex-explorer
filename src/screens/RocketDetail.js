@@ -16,7 +16,6 @@ const RocketDetail = (props) => {
   return (
     <Screen>
       <Wave color="white" />
-
       <Rocket
         name={rocket?.rocket_name}
         active={rocket?.active}
@@ -26,8 +25,8 @@ const RocketDetail = (props) => {
         diameter={rocket?.diameter?.meters}
         height={rocket?.height?.meters}
         imageUrl={rocket?.flickr_images[0]}
+        isLoading={!rocket}
       />
-
       <Wave color="black" />
     </Screen>
   );
