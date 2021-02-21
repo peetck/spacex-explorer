@@ -12,7 +12,7 @@ import useQuery from "../hooks/query";
 import heroAnimation from "../assets/animations/launches.json";
 
 const URL = "https://api.spacexdata.com/v3/launches";
-const LIMIT = 4;
+const LIMIT = 3;
 const FIRST_PAGE = 1;
 
 const Launches = (props) => {
