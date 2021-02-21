@@ -23,9 +23,9 @@ const Card = ({ title, active, imageUrl, date, to, details, isLoading }) => {
 
         <div className="p-5">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-lg line-clamp-1  w-4/5">
+            <p className="font-bold text-lg line-clamp-1  w-4/5">
               {isLoading ? "Loading..." : title}
-            </h3>
+            </p>
 
             {!isLoading && (
               <div className="relative inline-flex rounded-md shadow-sm ">
@@ -54,7 +54,7 @@ const Card = ({ title, active, imageUrl, date, to, details, isLoading }) => {
 
           <div className="flex flex-1 mt-3">
             <span
-              className={`text-gray-400 line-clamp-2 ${
+              className={`text-gray-600 line-clamp-2 ${
                 isLoading ? "my-6" : ""
               }`}
             >
