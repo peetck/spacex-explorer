@@ -12,7 +12,7 @@ const Rocket = ({
 }) => {
   return (
     <div className="container mx-auto">
-      <h1 className="w-full text-5xl font-bold leading-tight text-center my-14">
+      <h1 className="flex justify-center w-full text-5xl font-bold leading-tight items-center my-14">
         {name}
         <span className="relative rounded-md shadow-sm ml-8 hidden xl:inline-flex">
           <span
