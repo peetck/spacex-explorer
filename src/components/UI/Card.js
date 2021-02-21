@@ -5,14 +5,18 @@ import noImage from "../../assets/images/no-image.png";
 const Card = ({ title, active, imageUrl, date, to, details, isLoading }) => {
   return (
     <div
-      className={`flex flex-col cursor-pointer shadow-lg rounded-md w-80 p-3 mx-16 mt-16 transition duration-2000 transform hover:-rotate-3 hover:shadow-2xl`}
+      className={`flex flex-col cursor-pointer shadow-lg rounded-md w-80 mx-16 mt-16 transition duration-2000 transform hover:-rotate-3 hover:shadow-2xl`}
+      style={{
+        height: '480px'
+      }}
+
     >
       <Link to={to ?? "#"}>
         {isLoading ? (
           <div className="w-full h-72 rounded-3xl"></div>
         ) : (
           <img
-            className={`object-cover h-72 rounded-3xl ${details && "p-5"}`}
+            className={"m-auto object-cover h-72"}
             src={imageUrl ?? noImage}
             alt="Can't load img"
           />

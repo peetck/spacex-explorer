@@ -1,19 +1,30 @@
 import { Fragment } from "react";
+import Lottie from "lottie-react";
 
 import Card from "../UI/Card";
+import loader from "../../assets/images/loader.json";
 
 const LaunchList = ({ launches, isLoading }) => {
   return (
-    <div className="flex flex-wrap justify-center ">
+    <div className="flex flex-wrap justify-center">
       {isLoading ? (
         <Fragment>
-          <Card isLoading={isLoading} />
-          <Card isLoading={isLoading} />
-          <Card isLoading={isLoading} />
-          <Card isLoading={isLoading} />
+          <div
+            className="flex w-96 h-96 mt-16"
+            style={{
+              height: "480px",
+            }}
+          >
+            <Lottie animationData={loader} />
+          </div>
         </Fragment>
       ) : launches.length === 0 ? (
-        <div className="flex justify-center items-center w-full h-96 container mt-10">
+        <div
+          className="flex w-96 h-96 mt-16 justify-center items-center"
+          style={{
+            height: "480px",
+          }}
+        >
           <h1 className="text-2xl">No Launches Found.</h1>
         </div>
       ) : (

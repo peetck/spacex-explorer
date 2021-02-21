@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
-const Launch = ({ launch }) => {
+import Loader from "../UI/Loader";
+
+const Launch = ({ launch, isLoading }) => {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center mt-14 container mx-auto">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto">
       <h1 className="flex justify-center w-full text-5xl font-bold leading-tight items-center my-14">

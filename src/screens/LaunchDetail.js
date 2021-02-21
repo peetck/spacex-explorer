@@ -9,6 +9,7 @@ const LaunchDetail = (props) => {
   const { flightNumber } = useParams();
 
   const [launch, setLaunch] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchLaunch = async () => {
@@ -17,6 +18,7 @@ const LaunchDetail = (props) => {
       );
       const data = await response.json();
       setLaunch(data);
+      setIsLoading(false);
     };
     fetchLaunch();
   }, [flightNumber]);
@@ -25,7 +27,7 @@ const LaunchDetail = (props) => {
     <Screen>
       <Wave color="white" />
 
-      <Launch launch={launch} />
+      <Launch launch={launch} isLoading={isLoading} />
 
       <Wave color="black" />
     </Screen>
