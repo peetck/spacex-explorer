@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 
 import Wave from "../components/UI/Wave";
 import RocketsContext from "../contexts/RocketsContext";
-import Detail from "../components/UI/Detail";
 import Screen from "../components/UI/Screen";
+import Rocket from "../components/Rockets/Rocket";
 
 const RocketDetail = (props) => {
   const { rocketId } = useParams();
 
-  const { getRocket, isLoading } = useContext(RocketsContext);
+  const { getRocket } = useContext(RocketsContext);
 
   const rocket = getRocket(rocketId);
 
@@ -17,13 +17,15 @@ const RocketDetail = (props) => {
     <Screen>
       <Wave color="white" />
 
-      <Detail
-        title={rocket?.rocket_name}
-        description={rocket?.description}
+      <Rocket
+        name={rocket?.rocket_name}
         active={rocket?.active}
+        description={rocket?.description}
+        country={rocket?.country}
+        firstFlight={rocket?.first_flight}
+        diameter={rocket?.diameter?.meters}
+        height={rocket?.height?.meters}
         imageUrl={rocket?.flickr_images[0]}
-        wikipedia={rocket?.wikipedia}
-        isLoading={isLoading}
       />
 
       <Wave color="black" />

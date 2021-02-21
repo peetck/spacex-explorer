@@ -24,7 +24,7 @@ const Detail = ({
       </div>
 
       <div className="flex flex-col w-full text-center mb-10 xl:text-left ">
-        <div className="flex items-center justify-center w-full mt-7 mb-7 xl:mt-0 xl:justify-start">
+        <div className="flex items-center justify-center w-full mt-7 xl:mt-0 xl:justify-start">
           <h1 className="text-5xl font-bold my-5">
             {!isLoading ? (
               <div>
@@ -47,6 +47,8 @@ const Detail = ({
             )}
           </h1>
         </div>
+
+        <div className='mb-7'>xx/xx/xxxx</div>
 
         <div className="text-center mx-20 xl:mx-0 xl:w-2/3 xl:text-left ">
           {!isLoading ? description : "Loading..."}
