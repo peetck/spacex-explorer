@@ -41,7 +41,7 @@ const Pagination = (props) => {
 
   const paginationBar = arr.map((value, index) => (
     <div
-      className={`w-12 md:flex justify-center items-center hidden leading-5 transition duration-150 ease-in rounded-full ${
+      className={`w-12 justify-center items-center hidden leading-5 transition duration-150 ease-in rounded-full md:flex ${
         value === currentPage ? "bg-green-700 text-white" : ""
       } ${value !== "..." ? "cursor-pointer" : ""}`}
       onClick={() => pageChangeHandler(value)}
@@ -55,7 +55,9 @@ const Pagination = (props) => {
     <div className="flex flex-col items-center mt-20">
       <div className="flex text-gray-700">
         <div
-          className="h-12 w-12 mx-5 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer"
+          className={`h-12 w-12 mx-5 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer ${
+            currentPage === firstPage ? "opacity-60" : ""
+          }`}
           onClick={() => pageChangeHandler(currentPage - 1)}
         >
           <svg
@@ -76,7 +78,9 @@ const Pagination = (props) => {
         </div>
 
         <div
-          className="h-12 w-12 mx-5 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer"
+          className={`h-12 w-12 mx-5 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer ${
+            currentPage === lastPage ? "opacity-60" : ""
+          }`}
           onClick={() => pageChangeHandler(currentPage + 1)}
         >
           <svg

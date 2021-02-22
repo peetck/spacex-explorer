@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const Image = ({ className, src, width, height }) => {
+  const [showErrorImage, setShowErrorImage] = useState(false);
+
   return (
     <img
       className={`${className} w-full`}
@@ -10,7 +14,10 @@ const Image = ({ className, src, width, height }) => {
         height: height,
       }}
       onError={(e) => {
-        e.target.src = "no-image.png";
+        if (!showErrorImage) {
+          e.target.src = "no-image.png";
+          setShowErrorImage(true);
+        }
       }}
     />
   );
