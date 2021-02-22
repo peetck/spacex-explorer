@@ -13,7 +13,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
       try {
-        const response = caches.match(event.request);
+        const response = await caches.match(event.request);
         if (response) {
           return response;
         }
