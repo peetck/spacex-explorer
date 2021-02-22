@@ -9,7 +9,7 @@ const LaunchList = ({ launches, isLoading }) => {
       {isLoading ? (
         <Fragment>
           <div
-            className="flex w-96 h-96 mt-16"
+            className="flex w-96 h-96 mt-16 justify-center items-center"
             style={{
               height: "480px",
             }}
