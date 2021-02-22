@@ -8,7 +8,7 @@ const Hero = ({ title, subtitle, image }) => {
           <h1 className="my-4 text-5xl font-bold leading-tight">{title}</h1>
           <p className="leading-normal text-xl mb-8">{subtitle}</p>
         </div>
-        <div className="flex w-full md:w-3/5">
+        <div className="flex w-full justify-center md:w-3/5">
           <Lottie animationData={image} />
         </div>
       </div>
