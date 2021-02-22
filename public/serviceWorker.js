@@ -13,9 +13,9 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
       try {
-        const preloadResponse = await event.preloadResponse;
-        if (preloadResponse) {
-          return preloadResponse;
+        const response = caches.match(event.request);
+        if (response) {
+          return response;
         }
         const networkResponse = await fetch(event.request);
         return networkResponse;
