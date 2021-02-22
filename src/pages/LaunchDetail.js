@@ -5,6 +5,8 @@ import Wave from "../components/UI/Wave";
 import Screen from "../components/UI/Screen";
 import Launch from "../components/Launches/Launch";
 
+const URL = "https://api.spacexdata.com/v3/launches";
+
 const LaunchDetail = (props) => {
   const { flightNumber } = useParams();
 
@@ -13,12 +15,14 @@ const LaunchDetail = (props) => {
 
   useEffect(() => {
     const fetchLaunch = async () => {
-      const response = await fetch(
-        `https://api.spacexdata.com/v3/launches/${flightNumber}`
-      );
-      const data = await response.json();
-      setLaunch(data);
-      setIsLoading(false);
+      try {
+        const response = await fetch(`${URL}/${flightNumber}`);
+        const data = await response.json();
+        setLaunch(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(`Can't fetch launch from ${URL}/${flightNumber}`);
+      }
     };
     fetchLaunch();
   }, [flightNumber]);
