@@ -60,7 +60,7 @@ const Filter = ({
         >
           <option value="">All</option>
           <option value={true}>Success</option>
-          <option value={false}>Fail</option>
+          <option value={false}>Failed</option>
         </select>
       </label>
     </div>

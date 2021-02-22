@@ -1,11 +1,16 @@
+import { useContext } from "react";
+
 import Hero from "../components/UI/Hero";
 import Wave from "../components/UI/Wave";
 import Title from "../components/UI/Title";
 import RocketList from "../components/Rockets/RocketList";
 import Screen from "../components/UI/Screen";
 import heroAnimation from "../assets/animations/rockets.json";
+import RocketsContext from "../contexts/RocketsContext";
 
 const Rockets = (props) => {
+  const { rockets } = useContext(RocketsContext);
+
   return (
     <Screen>
       <Hero
@@ -15,7 +20,7 @@ const Rockets = (props) => {
       />
       <Wave color="white" />
       <Title message="Rockets" />
-      <RocketList />
+      <RocketList rockets={rockets} />
       <Wave color="black" />
     </Screen>
   );

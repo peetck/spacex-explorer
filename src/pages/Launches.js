@@ -8,7 +8,7 @@ import Filter from "../components/Launches/Filter";
 import Pagination from "../components/Launches/Pagination";
 import Title from "../components/UI/Title";
 import Screen from "../components/UI/Screen";
-import useQuery from "../hooks/query";
+import { useQuery } from "../hooks/query";
 import heroAnimation from "../assets/animations/launches.json";
 
 const URL = "https://api.spacexdata.com/v3/launches";

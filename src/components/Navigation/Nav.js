@@ -4,8 +4,6 @@ import NavItem from "./NavItem";
 import "./Nav.css";
 import Image from "../UI/Image";
 
-const FAVICON = process.env.PUBLIC_URL + "/favicon.png";
-
 const Nav = () => {
   return (
     <nav className="nav flex flex-wrap items-center justify-between px-4 bg-black text-white">
@@ -13,7 +11,12 @@ const Nav = () => {
         className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest"
         to="/"
       >
-        <Image className="h-10 mr-2 w-10" src={FAVICON} width='40px' height="40px" />
+        <Image
+          className="h-10 mr-2 w-10"
+          src="favicon.png"
+          width="40px"
+          height="40px"
+        />
 
         <span className="font-semibold text-xl tracking-tight">
           SpaceX Explorer

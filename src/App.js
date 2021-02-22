@@ -8,7 +8,6 @@ import {
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
 import Nav from "./components/Navigation/Nav";
-
 import Loader from "./components/UI/Loader";
 
 const Home = React.lazy(() => import("./pages/Home"));
