@@ -7,7 +7,7 @@ const RocketList = () => {
   const { rockets } = useContext(RocketsContext);
 
   return (
-    <div className="my-auto mx-auto grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3">
+    <div className="my-auto mx-auto grid grid-cols-1 justify-items-center lg:grid-cols-2 xl:grid-cols-3">
       {rockets &&
         rockets.map((rocket) => (
           <Card
