@@ -8,14 +8,13 @@ import {
 
 import { RocketsContextProvider } from "./contexts/RocketsContext";
 import Nav from "./components/Navigation/Nav";
-
 import Loader from "./components/UI/Loader";
 
-const Home = React.lazy(() => import("./screens/Home"));
-const Launches = React.lazy(() => import("./screens/Launches"));
-const LaunchDetail = React.lazy(() => import("./screens/LaunchDetail"));
-const Rockets = React.lazy(() => import("./screens/Rockets"));
-const RocketDetail = React.lazy(() => import("./screens/RocketDetail"));
+const Home = React.lazy(() => import("./pages/Home"));
+const Launches = React.lazy(() => import("./pages/Launches"));
+const LaunchDetail = React.lazy(() => import("./pages/LaunchDetail"));
+const Rockets = React.lazy(() => import("./pages/Rockets"));
+const RocketDetail = React.lazy(() => import("./pages/RocketDetail"));
 
 const App = () => {
   const routes = (

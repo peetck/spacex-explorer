@@ -1,12 +1,8 @@
-const NO_IMAGE = process.env.PUBLIC_URL + "/no-image.png";
-
-const Image = (props) => {
-  const { className, src, width, height } = props;
-
+const Image = ({ className, src, width, height }) => {
   return (
     <img
       className={`${className} w-full`}
-      src={src ?? NO_IMAGE}
+      src={src ?? "no-image.png"}
       alt="something went wrong!!"
       style={{
         textIndent: "-9999px",
@@ -14,7 +10,7 @@ const Image = (props) => {
         height: height,
       }}
       onError={(e) => {
-        e.target.src = NO_IMAGE;
+        e.target.src = "no-image.png";
       }}
     />
   );
