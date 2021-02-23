@@ -12,6 +12,7 @@ const RocketList = ({ rockets }) => {
           imageUrl={rocket.flickr_images[0]}
           date={rocket.first_flight}
           details={rocket.description}
+          isRocket={true}
         />
       ))}
     </div>

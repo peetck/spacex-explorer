@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import Truncate from "react-truncate";
 
 import Image from "./Image";
 
-const Card = ({ title, active, imageUrl, date, to, details }) => {
+const Card = ({ title, active, imageUrl, date, to, details, isRocket }) => {
   return (
     <div
       className={`flex flex-col cursor-pointer shadow-lg rounded-md w-80 mx-16 mt-16 transition duration-2000 transform hover:-rotate-3 hover:shadow-2xl`}
@@ -12,7 +13,9 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
     >
       <Link to={to ? to : "#"}>
         <Image
-          className="m-auto object-cover h-72"
+          className={`m-auto h-72 ${
+            isRocket ? "object-cover" : "object-scale-down"
+          }`}
           src={imageUrl}
           width="320px"
           height="288px"
@@ -20,7 +23,9 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
 
         <div className="p-5">
           <div className="flex items-center justify-between">
-            <p className="font-bold text-lg line-clamp-1 w-4/5">{title}</p>
+            <Truncate lines={1} className="font-bold text-lg " width="200">
+              {title}
+            </Truncate>
 
             <div className="relative inline-flex rounded-md shadow-sm ">
               <span
@@ -38,15 +43,15 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
           </div>
 
           <div className="flex flex-1">
-            <span className="text-gray-600 line-clamp-1">
+            <span className="text-gray-600">
               {date && new Date(date).toLocaleDateString("en-GB")}
             </span>
           </div>
 
           <div className="flex flex-1 mt-3">
-            <span className={"text-gray-600 line-clamp-2"}>
+            <Truncate lines={2} className="text-gray-600" width="250">
               {details ? details : "No Data"}
-            </span>
+            </Truncate>
           </div>
         </div>
       </Link>
