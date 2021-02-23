@@ -5,12 +5,12 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@tailwindcss/forms": "^0.2.1",
-    "@tailwindcss/line-clamp": "^0.2.0",
     "lottie-react": "^2.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-truncate": "^2.4.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
