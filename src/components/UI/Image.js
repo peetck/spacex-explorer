@@ -6,7 +6,7 @@ const Image = ({ className, src, width, height }) => {
   return (
     <img
       className={`${className} w-full`}
-      src={src ?? "no-image.png"}
+      src={src ?? "no-image.webp"}
       alt="something went wrong!!"
       style={{
         textIndent: "-9999px",
@@ -15,7 +15,7 @@ const Image = ({ className, src, width, height }) => {
       }}
       onError={(e) => {
         if (!showErrorImage) {
-          e.target.src = "no-image.png";
+          e.target.src = "no-image.webp";
           setShowErrorImage(true);
         }
       }}

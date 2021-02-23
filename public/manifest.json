@@ -3,8 +3,8 @@
   "name": "SpaceX Explorer",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "512x512",
+      "src": "favicon.webp",
+      "sizes": "256x256",
       "type": "image/png",
       "purpose": "any maskable"
     }

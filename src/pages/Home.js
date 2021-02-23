@@ -12,9 +12,8 @@ const Home = () => {
         subtitle="Space Exploration Technologies Corp. is an American aerospace manufacturer and space transportation services company headquartered in Hawthorne, California. It was founded in 2002."
         image={heroAnimation}
       />
-      <Wave color="white" />
+      <Wave />
       <Founder />
-      <Wave color="black" />
     </Screen>
   );
 };

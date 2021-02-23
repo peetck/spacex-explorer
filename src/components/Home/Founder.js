@@ -1,8 +1,8 @@
 import Image from "../UI/Image";
 
-const Founder = (props) => {
+const Founder = () => {
   return (
-    <div className="container mx-auto my-auto">
+    <div className="container mx-auto mb-20">
       <h1 className="w-full text-5xl font-bold leading-tight text-center my-14 ">
         Founder
       </h1>

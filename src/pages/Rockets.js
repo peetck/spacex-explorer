@@ -8,7 +8,7 @@ import Screen from "../components/UI/Screen";
 import heroAnimation from "../assets/animations/rockets.json";
 import RocketsContext from "../contexts/RocketsContext";
 
-const Rockets = (props) => {
+const Rockets = () => {
   const { rockets } = useContext(RocketsContext);
 
   return (
@@ -18,10 +18,9 @@ const Rockets = (props) => {
         subtitle="A rocket is a missile, spacecraft, aircraft or other vehicle that obtains thrust from a rocket engine. "
         image={heroAnimation}
       />
-      <Wave color="white" />
+      <Wave />
       <Title message="Rockets" />
       <RocketList rockets={rockets} />
-      <Wave color="black" />
     </Screen>
   );
 };
