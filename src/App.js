@@ -19,11 +19,11 @@ const RocketDetail = React.lazy(() => import("./pages/RocketDetail"));
 const App = () => {
   const routes = (
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/rockets" exact component={Rockets} />
-      <Route path="/rockets/:rocketId" component={RocketDetail} />
-      <Route path="/launches" exact component={Launches} />
-      <Route path="/launches/:flightNumber" component={LaunchDetail} />
+      <Route path="/" exact render={() => <Home />} />
+      <Route path="/rockets" exact render={() => <Rockets />} />
+      <Route path="/rockets/:rocketId" render={() => <RocketDetail />} />
+      <Route path="/launches" exact render={() => <Launches />} />
+      <Route path="/launches/:flightNumber" render={() => <LaunchDetail />} />
       <Route>
         <Redirect to="/" />
       </Route>
