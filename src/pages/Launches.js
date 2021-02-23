@@ -15,7 +15,7 @@ const URL = "https://api.spacexdata.com/v3/launches";
 const LIMIT = 3;
 const FIRST_PAGE = 1;
 
-const Launches = (props) => {
+const Launches = () => {
   const history = useHistory();
   const query = useQuery();
 
@@ -89,7 +89,7 @@ const Launches = (props) => {
         subtitle="The Falcon design features reusable first-stage boosters, which land either on a ground pad near the launch site or on a drone ship at sea. In December 2015, Falcon 9 became the first rocket to land propulsively after delivering a payload to orbit. "
         image={heroAnimation}
       />
-      <Wave color="white" />
+      <Wave />
       <Title message="Launches" />
       <Filter
         filterChangeHandler={filterChangeHandler}
@@ -104,7 +104,6 @@ const Launches = (props) => {
         currentPage={currentPage}
         lastPage={lastPage}
       />
-      <Wave color="black" />
     </Screen>
   );
 };

@@ -6,16 +6,11 @@
     "@craco/craco": "^6.1.1",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.2.0",
-    "@tailwindcss/postcss7-compat": "^2.0.3",
-    "@trendmicro/react-iframe": "^1.0.1",
-    "autoprefixer": "^9.8.6",
     "lottie-react": "^2.1.0",
-    "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -44,8 +39,12 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10"
+    "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }

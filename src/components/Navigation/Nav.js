@@ -13,7 +13,7 @@ const Nav = () => {
       >
         <Image
           className="h-10 mr-2 w-10"
-          src="favicon.png"
+          src="favicon.webp"
           width="40px"
           height="40px"
         />

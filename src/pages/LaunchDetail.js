@@ -7,7 +7,7 @@ import Launch from "../components/Launches/Launch";
 
 const URL = "https://api.spacexdata.com/v3/launches";
 
-const LaunchDetail = (props) => {
+const LaunchDetail = () => {
   const { flightNumber } = useParams();
 
   const [launch, setLaunch] = useState();
@@ -29,9 +29,8 @@ const LaunchDetail = (props) => {
 
   return (
     <Screen>
-      <Wave color="white" />
+      <Wave />
       <Launch launch={launch} isLoading={isLoading} />
-      <Wave color="black" />
     </Screen>
   );
 };

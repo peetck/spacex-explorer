@@ -6,7 +6,7 @@ import RocketsContext from "../contexts/RocketsContext";
 import Screen from "../components/UI/Screen";
 import Rocket from "../components/Rockets/Rocket";
 
-const RocketDetail = (props) => {
+const RocketDetail = () => {
   const { rocketId } = useParams();
 
   const { getRocket } = useContext(RocketsContext);
@@ -15,7 +15,7 @@ const RocketDetail = (props) => {
 
   return (
     <Screen>
-      <Wave color="white" />
+      <Wave />
       <Rocket
         name={rocket?.rocket_name}
         active={rocket?.active}
@@ -27,7 +27,6 @@ const RocketDetail = (props) => {
         imageUrl={rocket?.flickr_images[0]}
         isLoading={!rocket}
       />
-      <Wave color="black" />
     </Screen>
   );
 };
