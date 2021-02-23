@@ -20,7 +20,7 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
 
         <div className="p-5">
           <div className="flex items-center justify-between">
-            <p className="font-bold text-lg line-clamp-1  w-4/5">{title}</p>
+            <p className="font-bold text-lg line-clamp-1 w-4/5">{title}</p>
 
             <div className="relative inline-flex rounded-md shadow-sm ">
               <span
@@ -38,14 +38,14 @@ const Card = ({ title, active, imageUrl, date, to, details }) => {
           </div>
 
           <div className="flex flex-1">
-            <span className="text-gray-600 line-clamp-2">
+            <span className="text-gray-600 line-clamp-1">
               {date && new Date(date).toLocaleDateString("en-GB")}
             </span>
           </div>
 
           <div className="flex flex-1 mt-3">
             <span className={"text-gray-600 line-clamp-2"}>
-              {details && "No Data"}
+              {details ? details : "No Data"}
             </span>
           </div>
         </div>
