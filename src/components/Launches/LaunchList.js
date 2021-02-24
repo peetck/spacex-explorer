@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 
-import Card from "../UI/Card";
 import Loader from "../UI/Loader";
+
+const Card = React.lazy(() => import("../UI/Card"));
 
 const LaunchList = ({ launches, isLoading }) => {
   return (
